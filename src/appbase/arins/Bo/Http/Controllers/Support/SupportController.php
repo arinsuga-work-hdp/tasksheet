@@ -4,6 +4,7 @@ namespace Arins\Bo\Http\Controllers\Support;
 
 // use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 use Arins\Bo\Http\Controllers\Activity\ActivityController;
 
@@ -97,11 +98,13 @@ class SupportController extends ActivityController
     /** override */
     protected function updateActivitysubtype(Request $request, $id)
     {
+        $user = Auth::user();
         //get data from database
         $record = $this->data->find($id);
 
         //get input value by fillable fields
         $data = $request->only($this->data->getFillable()); //get field input
+        $data['updated_by'] = $user->id;
 
         //validate input value (validate resolution)
         $record->activitysubtype_id = $request->input('activitysubtype_id');

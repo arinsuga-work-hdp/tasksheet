@@ -26,7 +26,9 @@ class Activity extends Model
         'enduser_id',
         'enduserdept_id',
         'endusersubdept_id',
-        'technician_id'
+        'technician_id',
+        'created_by',
+        'updated_by'
     ];
 
     protected $dates = [

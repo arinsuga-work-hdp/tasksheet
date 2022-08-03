@@ -4,6 +4,7 @@ namespace Arins\Traits\Http\Controller\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 use Arins\Facades\Response;
 use Arins\Facades\Filex;
@@ -17,6 +18,7 @@ trait Actionprocess
     {
 
         //get input value by fillable fields
+        $user = Auth::user();
         $data = $request->only($this->data->getFillable()); //get field input
         $upload = $request->file('upload'); //upload file (image/document) ==> if included
         $imageTemp = $request->input('imageTemp'); //temporary file uploaded
@@ -41,7 +43,8 @@ trait Actionprocess
 
         //copy temporary uploaded image to real path
         $data['image'] = Filex::uploadOrCopyAndRemove('', $uploadTemp, $this->uploadDirectory, $upload, 'public', false);
-        
+        $data['created_by'] = $user->id;
+
         //save data
         if ($this->data->create($data)) {
             return 0; //success
@@ -57,6 +60,7 @@ trait Actionprocess
 
     protected function processUpdate(Request $request, $id)
     {
+        $user = Auth::user();
         //get data from database
         $record = $this->data->find($id);
         $imageOld = $record->image;
@@ -74,6 +78,7 @@ trait Actionprocess
         //validate input value
         $request->validate($this->data->getValidateInput());
 
+        $data['updated_by'] = $user->id;
         $imageNew = Filex::uploadOrCopyAndRemove($imageOld, $uploadTemp, $this->uploadDirectory, $upload, 'public', false);
         $data['image'] = $imageNew;
         if (strtolower($toggleRemoveImage) ==  'true')

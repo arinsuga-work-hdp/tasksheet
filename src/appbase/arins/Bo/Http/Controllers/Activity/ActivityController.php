@@ -4,6 +4,7 @@ namespace Arins\Bo\Http\Controllers\Activity;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 use Arins\Http\Controllers\BoController;
 use Arins\Traits\Http\Controller\Base;
@@ -134,6 +135,7 @@ class ActivityController extends BoController
 
     protected function updateResult(Request $request, $id, $activityStatusId = null)
     {
+        $user = Auth::user();
         //get data from database
         $record = $this->data->find($id);
         $record->activitystatus_id = $activityStatusId;
@@ -152,6 +154,7 @@ class ActivityController extends BoController
         {
             $data['enddt'] = now();
         }
+        $data['updated_by'] = $user->id;
 
         if ($this->data->update($record, $data)) {
             return 0; //success
