@@ -38,6 +38,21 @@ class Activity extends Model
         'updated_at',
     ];
 
+    public function createdBy()
+    {
+        return $this->belongsTo('App\User', 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo('App\User', 'updated_by');
+    }
+
+    public function technician()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function enduser()
     {
         return $this->belongsTo('Arins\Models\Employee');
@@ -46,12 +61,6 @@ class Activity extends Model
     public function enduserdept() {
         return $this->belongsTo('Arins\Models\Dept');
     }        
-
-
-    public function technician()
-    {
-        return $this->belongsTo('App\User');
-    }
 
     public function activitytype()
     {

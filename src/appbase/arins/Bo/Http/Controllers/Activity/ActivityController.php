@@ -197,7 +197,7 @@ class ActivityController extends BoController
         } //end if
 
         $this->processReport();
-        
+
         return $this->responseView('report-detail', false, false, false);
     }
 

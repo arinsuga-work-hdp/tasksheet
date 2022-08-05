@@ -27,7 +27,7 @@
                 <td>{{ $item->resolution }}</td>
                 <td>{{ $item->activitysubtype['name'] }}</td>
                 <td>{{ $item->technician['name'] }}</td>
-                <td>Created By</td>
+                <td>{{ $item->createdBy['name'] }}</td>
                 <td>{{ \Arins\Facades\Formater::datetime($item->startdt) }}</td>
                 <td>{{ \Arins\Facades\Formater::datetime($item->enddt) }}</td>
                 <td>{{ $item->startdt->diffInHours($item->enddt) }}:{{ $item->startdt->diff($item->enddt)->format('%I:%S') }}</td>
