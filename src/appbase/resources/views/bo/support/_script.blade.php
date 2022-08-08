@@ -4,25 +4,12 @@
         dateFormat: "{{ config('a1.datejs.datetime') }}"
     });
     //CKEDITOR.replace( 'description' );
-    
-function HtmlTOExcel(type, fun, dl) {
-    var elt = document.getElementById('filter');
-    var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
-    return dl ?
-        XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
-        XLSX.writeFile(wb, fun || ('student-recored.' + (type || 'xlsx')));
-}
-
-
-var specialElementHandlers = {
-    // element with id of "bypass" - jQuery style selector
-    '.no-export': function (element, renderer) {
-        // true = "handled elsewhere, bypass text extraction"
-        return true;
-    }
-};
 
 $(document).ready(function() {
+
+    $('#exportXLS').click(function(){
+        TableToExcel('filter', 'support_rptXXX');
+    })
 
     $('.select2').select2();
     var $tasktype_id = $('#tasktype_id');
