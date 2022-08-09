@@ -9,7 +9,7 @@
     $(document).ready(function() {
 
         $('#exportXLS').click(function(){
-            TableToExcel('filter', 'support_rpt');
+            TableToExcel('filter', 'project_rpt');
         })
 
         $('.select2').select2();

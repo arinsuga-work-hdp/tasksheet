@@ -8,7 +8,7 @@
 $(document).ready(function() {
 
     $('#exportXLS').click(function(){
-        TableToExcel('filter', 'support_rpt');
+        TableToExcel('filter', 'maintenance_rpt');
     })
 
     $('.select2').select2();
