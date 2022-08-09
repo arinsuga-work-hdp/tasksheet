@@ -8,6 +8,10 @@
 
     $(document).ready(function() {
 
+        $('#exportXLS').click(function(){
+            TableToExcel('filter', 'support_rpt');
+        })
+
         $('.select2').select2();
         var $tasktype_id = $('#tasktype_id');
         

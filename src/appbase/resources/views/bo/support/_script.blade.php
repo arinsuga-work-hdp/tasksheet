@@ -8,7 +8,7 @@
 $(document).ready(function() {
 
     $('#exportXLS').click(function(){
-        TableToExcel('filter', 'support_rptXXX');
+        TableToExcel('filter', 'support_rpt');
     })
 
     $('.select2').select2();
@@ -61,23 +61,6 @@ $(document).ready(function() {
         
     }); //end event
     
-
-    $("#exportPDF").click(function() {
-        window.jsPDF = window.jspdf.jsPDF;
-        window.html2canvas = html2canvas;
-        const doc = new jsPDF('l');
-
-        var source = document.getElementById('filter');
-        doc.html(source, {
-            callback: function (doc) {
-                doc.save("report-detail-support.pdf");
-            }
-        });
-
-
-    })
-
-
 });    
     
 

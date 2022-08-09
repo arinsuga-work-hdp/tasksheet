@@ -45,6 +45,19 @@
 
             </ul>
 
+            @if (isset($viewModel->data->datalist))
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button id="exportXLS" type="button" class="btn btn-block btn-success btn-flat">Export to Excel</button>
+                    </li>
+                    <li class="nav-item">
+                        <button id="exportPDF" type="button" class="btn btn-block btn-danger btn-flat">Export to PDF</button>
+                    </li>
+                </ul>
+
+            @endif
+
         </nav>
 
         @if (!isset($viewModel->data->datalist))
@@ -74,7 +87,7 @@
 
 @section('js')
 
-    <script src="{{ asset('js/CustomForIndex.js') }}" defer></script>
+    <script src="{{ asset('js/CustomForIndex.js') }}"></script>
     @include('bo.maintenance._script')
 
 @endsection
