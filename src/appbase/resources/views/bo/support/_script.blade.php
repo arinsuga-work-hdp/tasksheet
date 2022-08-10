@@ -5,10 +5,21 @@
     });
     //CKEDITOR.replace( 'description' );
 
+
 $(document).ready(function() {
 
     $('#exportXLS').click(function(){
         TableToExcel('filter', 'support_rpt');
+    })
+
+    $('#exportPDF').click(function(){
+        const doc = new jsPDF();
+
+        doc.text("Hello world!", 10, 10);
+        doc.save("a4.pdf");        
+
+
+        
     })
 
     $('.select2').select2();

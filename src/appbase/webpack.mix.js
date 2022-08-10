@@ -23,6 +23,7 @@ mix.setResourceRoot('../');
 mix.scripts([
       'resources/plugins/TableFilter/TableFilter.js',
       'resources/plugins/TableToExcel/TableToExcel.js',
+      'resources/plugins/jspdf/jspdf.js',
       'resources/plugins/xlsx/xlsx.min.js'
    ], 'public/js/CustomForIndex.js');
 
