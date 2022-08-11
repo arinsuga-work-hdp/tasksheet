@@ -2,7 +2,7 @@ function TableToExcel(tableID, filename = '') {
 
     var downloadLink;
     var dataType = 'application/vnd.ms-excel';
-    var tableSelect = document.getElementById('filter');
+    var tableSelect = document.getElementById(tableID);
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
 
     // Specify file name

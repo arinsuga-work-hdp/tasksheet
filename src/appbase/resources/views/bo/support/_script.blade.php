@@ -13,13 +13,40 @@ $(document).ready(function() {
     })
 
     $('#exportPDF').click(function(){
-        const doc = new jsPDF();
 
-        doc.text("Hello world!", 10, 10);
-        doc.save("a4.pdf");        
+        // TableToPdf('filter', 'support_rpt');
 
+        var tableSelect = document.getElementById('filter');
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+        var filename = 'pdf_data.pdf';
 
+        // const doc = new jsPDF({
+        //     orientation: 'l',
+        //     format: 'legal'
+        // });
+        // const doc = new jsPDF();
+        // doc.text("Hello world!", 1, 5);
+        // doc.save("a4.pdf");        
+
+        var doc = new jsPDF({orientation: 'l', format: 'legal'});
+
+        // It can parse html:
+        // <table id="my-table"><!-- ... --></table>
+        autoTable(doc, { html: '#filter' })
+
+        // Or use javascript directly:
+        autoTable(doc, {
+        head: [['Name', 'Email', 'Country']],
+        body: [
+            ['David', 'david@example.com', 'Sweden'],
+            ['Castille', 'castille@example.com', 'Spain'],
+            // ...
+        ],
+        })
+
+        doc.save('table.pdf');
         
+
     })
 
     $('.select2').select2();
