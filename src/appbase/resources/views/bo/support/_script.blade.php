@@ -5,7 +5,7 @@
     });
     //CKEDITOR.replace( 'description' );
 
-
+// window.jsPDF = window.jspdf.jsPDF;
 $(document).ready(function() {
 
     $('#exportXLS').click(function(){
@@ -16,36 +16,25 @@ $(document).ready(function() {
 
         // TableToPdf('filter', 'support_rpt');
 
+        var tableID = '#filter';
         var tableSelect = document.getElementById('filter');
         var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
         var filename = 'pdf_data.pdf';
 
-        // const doc = new jsPDF({
-        //     orientation: 'l',
-        //     format: 'legal'
-        // });
-        // const doc = new jsPDF();
-        // doc.text("Hello world!", 1, 5);
-        // doc.save("a4.pdf");        
-
-        var doc = new jsPDF({orientation: 'l', format: 'legal'});
-
-        // It can parse html:
-        // <table id="my-table"><!-- ... --></table>
-        autoTable(doc, { html: '#filter' })
-
-        // Or use javascript directly:
-        autoTable(doc, {
-        head: [['Name', 'Email', 'Country']],
-        body: [
-            ['David', 'david@example.com', 'Sweden'],
-            ['Castille', 'castille@example.com', 'Spain'],
-            // ...
-        ],
-        })
-
-        doc.save('table.pdf');
+        var doc = new jsPDF({orientation: 'l', format: 'a3'});
+        doc.autoTable({
+            html: '#filter',
+            styles: { lineColor: 200, lineWidth: 0.1, },
+            headStyles: { fillColor: false, textColor: 20, halign: 'center', valign: 'middle' },
+            bodyStyles: { fillColor: false, textColor: 20 },
+            alternateRowStyles: { fillColor: false },
+            // tableLineColor: 200, // number, array (see color section below)
+            // tableLineWidth: 0.1,
+        });
         
+        //doc.output('dataurlnewwindow');
+        doc.save(filename);
+
 
     })
 
