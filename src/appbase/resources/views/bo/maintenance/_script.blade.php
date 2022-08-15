@@ -11,6 +11,10 @@ $(document).ready(function() {
         TableToExcel('filter', 'maintenance_rpt');
     })
 
+    $('#exportPDF').click(function(){
+        TableToPdf('filter', 'maintenance_rpt', 'l', 'a3');
+    })
+
     $('.select2').select2();
     var $tasktype_id = $('#tasktype_id');
     

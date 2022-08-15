@@ -25,7 +25,7 @@ mix.scripts([
       'resources/plugins/TableToExcel/TableToExcel.js',
       'resources/plugins/jspdf/jspdf.js',
       'resources/plugins/jspdf/jspdf.plugin.autotable.js',
-      // 'resources/plugins/jspdf/TableToPdf.js',
+      'resources/plugins/jspdf/TableToPdf.js',
       'resources/plugins/xlsx/xlsx.min.js'
    ], 'public/js/CustomForIndex.js');
 

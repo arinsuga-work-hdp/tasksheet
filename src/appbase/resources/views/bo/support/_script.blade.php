@@ -13,29 +13,7 @@ $(document).ready(function() {
     })
 
     $('#exportPDF').click(function(){
-
-        // TableToPdf('filter', 'support_rpt');
-
-        var tableID = '#filter';
-        var tableSelect = document.getElementById('filter');
-        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-        var filename = 'pdf_data.pdf';
-
-        var doc = new jsPDF({orientation: 'l', format: 'a3'});
-        doc.autoTable({
-            html: '#filter',
-            styles: { lineColor: 200, lineWidth: 0.1, },
-            headStyles: { fillColor: false, textColor: 20, halign: 'center', valign: 'middle' },
-            bodyStyles: { fillColor: false, textColor: 20 },
-            alternateRowStyles: { fillColor: false },
-            // tableLineColor: 200, // number, array (see color section below)
-            // tableLineWidth: 0.1,
-        });
-        
-        //doc.output('dataurlnewwindow');
-        doc.save(filename);
-
-
+        TableToPdf('filter', 'support_rpt', 'l', 'a3');
     })
 
     $('.select2').select2();

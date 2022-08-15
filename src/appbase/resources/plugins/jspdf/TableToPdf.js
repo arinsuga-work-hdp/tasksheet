@@ -1,23 +1,21 @@
 
-function TableToPdf(tableID, filename = '') {
+function TableToPdf(tableID, filename = 'pdf_data.pdf', orientation = 'p', paperSize = 'letter') {
 
     var tableSelect = document.getElementById(tableID);
     var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    console.log(tableHTML);
+    filename = filename;
 
-    // Specify file name
-    filename = filename?filename+'.pdf':'pdf_data.pdf';
-
-    // const doc = new jsPDF({
-    //     orientation: 'l',
-    //     format: 'legal'
-    // });
-
-    const doc = new jsPDF();
-
-    doc.text("Hello world!", 1, 5);
-    doc.save(filename);        
-
+    var doc = new jsPDF({orientation: orientation, format: paperSize});
+    doc.autoTable({
+        html: '#'+tableID,
+        styles: { lineColor: 200, lineWidth: 0.1, },
+        headStyles: { fillColor: false, textColor: 20, halign: 'center', valign: 'middle' },
+        bodyStyles: { fillColor: false, textColor: 20 },
+        alternateRowStyles: { fillColor: false },
+    });
+    
+    //doc.output('dataurlnewwindow');
+    doc.save(filename);
 
 } //end method
 
