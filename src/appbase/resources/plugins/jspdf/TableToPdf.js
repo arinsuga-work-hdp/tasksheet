@@ -1,18 +1,41 @@
 
-function TableToPdf(tableID, filename = 'pdf_data.pdf', orientation = 'p', paperSize = 'letter') {
+function TableToPdf(parTableID, parFilename = null,
+                    parOrientation = null, parPaperSize = null,
+                    parColOptions = null
+                    ) {
 
-    var tableSelect = document.getElementById(tableID);
-    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    filename = filename;
+    var tableID = parTableID;                        
+    var filename = 'pdf_data.pdf';
+    var orientation = 'p';
+    var paperSize = 'letter';
+
+    if (parFilename) {
+        filename = parFilename;
+    }
+
+    if (parOrientation) {
+        orientation = parOrientation;
+    }
+
+    if (parPaperSize) {
+        paperSize = parPaperSize;
+    }
 
     var doc = new jsPDF({orientation: orientation, format: paperSize});
-    doc.autoTable({
+    var options = {
         html: '#'+tableID,
         styles: { lineColor: 200, lineWidth: 0.1, },
         headStyles: { fillColor: false, textColor: 20, halign: 'center', valign: 'middle' },
         bodyStyles: { fillColor: false, textColor: 20 },
         alternateRowStyles: { fillColor: false },
-    });
+    };
+
+    if (parColOptions) {
+        options.columnWidth = parColOptions.columnWidth;
+        options.columnStyles = parColOptions.columnStyles;
+    }
+
+    doc.autoTable(options);
     
     //doc.output('dataurlnewwindow');
     doc.save(filename);
