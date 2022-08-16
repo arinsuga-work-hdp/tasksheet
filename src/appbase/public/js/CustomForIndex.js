@@ -471,7 +471,6 @@ function TableToPdf(parTableID, parFilename = null,
     };
 
     if (parColOptions) {
-        options.columnWidth = parColOptions.columnWidth;
         options.columnStyles = parColOptions.columnStyles;
     }
 

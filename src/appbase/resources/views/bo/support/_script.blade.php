@@ -13,7 +13,52 @@ $(document).ready(function() {
     })
 
     $('#exportPDF').click(function(){
-        TableToPdf('filter', 'support_rpt', 'l', 'a3');
+
+        var options = {
+            columnStyles:{
+                0: {
+                    cellWidth: 23
+                },
+                1: {
+                    cellWidth: 23
+                }, 
+                2: {
+                    cellWidth: 20
+                },
+                3: {
+                    cellWidth: 23
+                },
+                4: {
+                    cellWidth: 60, overflow: 'linebreak'
+                },
+                5: {
+                    cellWidth: 60, overflow: 'linebreak'
+                },
+                6: {
+                    cellWidth: 60, overflow: 'linebreak'
+                },
+                7: {
+                    cellWidth: 'auto', halign: 'center'
+                },
+                8: {
+                    cellWidth: 'auto', halign: 'center'
+                },
+                9: {
+                    cellWidth: 'auto', halign: 'center'
+                },
+                10: {
+                    cellWidth: 'auto', halign: 'center'
+                },
+                11: {
+                    cellWidth: 'auto', halign: 'center'
+                },
+                12: {
+                    cellWidth: 'auto', halign: 'center'
+                },
+            }
+        };
+
+        TableToPdf('filter', 'support_rpt', 'l', 'a3', options);
     })
 
     $('.select2').select2();
