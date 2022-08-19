@@ -47,7 +47,7 @@ $(document).ready(function() {
             }
         };
 
-        TableToPdf('filter', 'support_rpt', 'l', 'legal', options);
+        TableToPdf('filter', 'maintenance_rpt', 'l', 'legal', options);
     })
 
     

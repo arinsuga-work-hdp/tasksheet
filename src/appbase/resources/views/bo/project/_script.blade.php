@@ -48,7 +48,7 @@
                 }
             };
 
-            TableToPdf('filter', 'support_rpt', 'l', 'legal', options);
+            TableToPdf('filter', 'project_rpt', 'l', 'legal', options);
         })
 
 
