@@ -6,8 +6,10 @@
             <th style="width: 5%;">Mulai</th>
             <th style="width: 5%;">Selesai</th>
             <th style="width: 10%;">Category</th>
+            <th style="width: 10%;">Nama</th>
+            <th style="width: 15%;">Keterangan</th>
             <th style="width: 15%;">Subject</th>
-            <th style="width: 55%;">Deskripsi</th>
+            <th style="width: 30%;">Deskripsi</th>
         </tr>
     </thead>
     <tbody>
@@ -28,6 +30,12 @@
                 </td>
                 <td>
                     <div class="truncate-multiline">{!! nl2br(e($item->tasktype->name)) !!}</div>
+                </td>
+                <td>
+                    <div>{{ isset($item->enduser) ? $item->enduser->name : null }}</div>
+                </td>
+                <td>
+                    <div>{{ isset($item->enduser) ? $item->enduser->add_info1 : null }}</div>
                 </td>
                 <td>
                     <div class="truncate-multiline">{!! nl2br(e($item->subject)) !!}</div>
