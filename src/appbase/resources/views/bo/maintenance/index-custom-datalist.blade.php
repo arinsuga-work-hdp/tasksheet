@@ -13,7 +13,7 @@
     <tbody>
 
         @foreach ($viewModel->data->datalist as $item)
-            <tr onclick="window.location.assign('{{ route('support.show', ['support' => $item->id]) }}');">
+            <tr onclick="window.location.assign('{{ route('maintenance.show', ['maintenance' => $item->id]) }}');">
                 <td>
                     <div class="image-table-cell">
                         <img src="{{ Arins\Facades\Filex::image($item->image) }}" alt="{{ $item->name }}">
