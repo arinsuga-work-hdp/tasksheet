@@ -20,7 +20,33 @@ mix.setResourceRoot('../');
 
 
 //BO Partial JS
-mix.scripts([
+// mix.scripts([
+//       'resources/plugins/TableFilter/TableFilter.js',
+//       'resources/plugins/TableToExcel/TableToExcel.js',
+//       'resources/plugins/jspdf/jspdf.js',
+//       'resources/plugins/jspdf/jspdf.plugin.autotable.js',
+//       'resources/plugins/jspdf/TableToPdf.js',
+//       'resources/plugins/xlsx/xlsx.min.js'
+//    ], 'public/js/CustomForIndex.js');
+
+
+//BO Full
+mix.js('resources/js/admin.js', 'public/js')
+   .js('resources/js/app.js', 'public/js')
+   .extract(['jquery', 'overlayscrollbars', 'popper.js', 'bootstrap'])
+   .sass('resources/sass/admin.scss', 'public/css')
+   .sass('resources/sass/app.scss', 'public/css')
+   .copyDirectory('resources/assets/img', 'public/img')
+   .styles([
+    'resources/css/main.css'
+   ], 'public/css/main.css')
+   .scripts([
+      'resources/js/main.js'
+   ], 'public/js/main.js')
+   .scripts([
+      'resources/plugins/TableToExcel/TableToExcel.js'
+   ], 'public/js/TableToExcel.js')
+   .scripts([
       'resources/plugins/TableFilter/TableFilter.js',
       'resources/plugins/TableToExcel/TableToExcel.js',
       'resources/plugins/jspdf/jspdf.js',
@@ -28,28 +54,6 @@ mix.scripts([
       'resources/plugins/jspdf/TableToPdf.js',
       'resources/plugins/xlsx/xlsx.min.js'
    ], 'public/js/CustomForIndex.js');
-
-
-//BO Full
-// mix.js('resources/js/admin.js', 'public/js')
-//    .js('resources/js/app.js', 'public/js')
-//    .extract(['jquery', 'overlayscrollbars', 'popper.js', 'bootstrap'])
-//    .sass('resources/sass/admin.scss', 'public/css')
-//    .sass('resources/sass/app.scss', 'public/css')
-//    .copyDirectory('resources/assets/img', 'public/img')
-//    .styles([
-//     'resources/css/main.css'
-//    ], 'public/css/main.css')
-//    .scripts([
-//       'resources/js/main.js'
-//    ], 'public/js/main.js')
-//    .scripts([
-//       'resources/plugins/TableToExcel/TableToExcel.js'
-//    ], 'public/js/TableToExcel.js')
-//    .scripts([
-//       'resources/plugins/TableFilter/TableFilter.js',
-//       'resources/plugins/xlsx/xlsx.min.js'
-//    ], 'public/js/CustomForIndex.js');
 
 //WEBSITE 1 ==> Do not use ( laravel mix problem )
 // mix.js('resources/js/website.js', 'public/website/js')
