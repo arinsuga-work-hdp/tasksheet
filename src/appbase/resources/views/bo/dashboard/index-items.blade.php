@@ -38,8 +38,7 @@
         <div class="small-box bg-pink">
             <div class="inner">
                 <h3>5</h3>
-
-                <p>Project</p>
+                <p>My Task: Task yang sedang dikerjakan oleh user sesuai login</p>
             </div>
             <div class="icon">
                 <i class="fa fa-tasks"></i>
@@ -48,4 +47,29 @@
             <a href="#" class="small-box-footer">View Detail <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <div>
+                    <p style="position: absolute; bottom: 0px; background-color: red;">Grafik Bar - Incident dan Request per Bulan selama 1 tahun</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-12">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+
+                <p>Pie Chart - Incident berdasarkan sub category dalam 1 bulan</p>
+                <div style="height: 250px;"></div>
+            </div>
+        </div>
+    </div>
+
 </div>
