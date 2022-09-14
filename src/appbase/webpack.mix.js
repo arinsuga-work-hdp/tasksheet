@@ -37,6 +37,7 @@ mix.js('resources/js/admin.js', 'public/js')
    .sass('resources/sass/admin.scss', 'public/css')
    .sass('resources/sass/app.scss', 'public/css')
    .copyDirectory('resources/assets/img', 'public/img')
+   .copyDirectory('resources/plugins', 'public/plugins')
    .styles([
     'resources/css/main.css'
    ], 'public/css/main.css')
