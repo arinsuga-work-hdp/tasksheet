@@ -1,12 +1,10 @@
 {
-    "/js/manifest.js": "/js/manifest.js",
-    "/js/vendor.js": "/js/vendor.js",
     "/js/admin.js": "/js/admin.js",
     "/css/admin.css": "/css/admin.css",
     "/css/app.css": "/css/app.css",
-    "/js/app.js": "/js/app.js",
+    "/js/manifest.js": "/js/manifest.js",
+    "/js/vendor.js": "/js/vendor.js",
     "/css/main.css": "/css/main.css",
-    "/js/main.js": "/js/main.js",
-    "/js/TableToExcel.js": "/js/TableToExcel.js",
-    "/js/CustomForIndex.js": "/js/CustomForIndex.js"
+    "/js/plugins.js": "/js/plugins.js",
+    "/js/main.js": "/js/main.js"
 }
