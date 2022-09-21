@@ -39,6 +39,10 @@ mix.js('resources/js/admin.js', 'public/js')
    .styles([
     'resources/css/main.css'
    ], 'public/css/main.css')
+   .styles([
+    'resources/plugins/flatpickr/flatpickr.css',
+    'resources/plugins/select2/select2.min.css',
+   ], 'public/css/plugins.css')
    .scripts([
       'resources/plugins/flatpickr/flatpickr.js',
       'resources/plugins/flatpickr/lang/id.js',

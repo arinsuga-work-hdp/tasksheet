@@ -135,7 +135,11 @@
     <script src="{{ asset('js/manifest.js') }}"></script>
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
-    <script src="{{ asset('js/plugins.js') }}"></script>
+    <script src="{{ asset('plugins/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ asset('plugins/flatpickr/lang/id.js') }}"></script>
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('plugins/select2/select2.min.js') }}" defer></script>
+
     <script src="{{ asset('js/main.js') }}" defer></script>
     @yield('js')
 
