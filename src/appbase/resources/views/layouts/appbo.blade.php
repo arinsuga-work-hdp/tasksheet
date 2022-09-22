@@ -12,8 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/flatpickr/flatpickr.css') }}" rel="stylesheet">
-    <link href="{{ asset('plugins/select2/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plugins.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     
 
@@ -135,11 +134,7 @@
     <script src="{{ asset('js/manifest.js') }}"></script>
     <script src="{{ asset('js/vendor.js') }}"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
-    <script src="{{ asset('plugins/flatpickr/flatpickr.js') }}"></script>
-    <script src="{{ asset('plugins/flatpickr/lang/id.js') }}"></script>
-    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('plugins/select2/select2.min.js') }}" defer></script>
-
+    <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     @yield('js')
 
