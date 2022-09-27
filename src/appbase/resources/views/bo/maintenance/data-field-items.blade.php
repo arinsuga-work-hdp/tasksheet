@@ -53,7 +53,7 @@ margin-left: auto; margin-right:auto;">
 <div class="form-group">
         <label>Petugas Maintenance</label>
         @if ($fieldEnabled == true)
-          <select name="technician_id" class="form-control">
+          <select name="technician_id" class="form-control select2">
                 @foreach ($technician as $key => $item)
 
                   @if ($errors->any())
@@ -78,7 +78,7 @@ margin-left: auto; margin-right:auto;">
       <div class="form-group">
         <label>Jenis Maintenance</label>
         @if ($fieldEnabled == true)
-          <select name="activitysubtype_id" class="form-control">
+          <select name="activitysubtype_id" class="form-control select2">
                 @foreach ($activitysubtype as $key => $item)
 
                   @if ($errors->any())
@@ -103,7 +103,7 @@ margin-left: auto; margin-right:auto;">
       <div class="form-group">
         <label>Object Maintenance</label>
         @if ($fieldEnabled == true)
-          <select name="tasktype_id" class="form-control">
+          <select name="tasktype_id" class="form-control select2">
                 @foreach ($tasktype as $key => $item)
 
                   @if ($errors->any())

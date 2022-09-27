@@ -7,6 +7,18 @@
 
 $(document).ready(function() {
 
+    var frm = document.getElementById('frmData');
+    if (frm) {
+
+        $('#btnSubmit').click(function() {
+            event.preventDefault();
+            document.getElementById('frmData').submit();
+        })
+        
+    } else {
+        $('#btnSubmit').hide();
+    }
+
     $('#exportXLS').click(function(){
         TableToExcel('filter', 'maintenance_rpt');
     })
