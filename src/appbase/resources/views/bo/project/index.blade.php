@@ -66,6 +66,4 @@
 
 @section('js')
 
-    <script src="{{ asset('js/CustomForIndex.js') }}" defer></script>
-
 @endsection

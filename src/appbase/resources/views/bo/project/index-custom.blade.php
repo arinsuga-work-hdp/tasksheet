@@ -11,8 +11,7 @@
 </li>
 
 <li class="nav-item">
-    <a onclick="event.preventDefault(); document.getElementById('frmData').submit();"
-       class="nav-link" href="#">
+    <a id="btnSubmit" class="nav-link" href="#">
         <i class="fas fa-lg fa-search"></i>
     </a>
 </li>
@@ -84,7 +83,6 @@
 
 @section('js')
 
-    <script src="{{ asset('js/CustomForIndex.js') }}" defer></script>
     @include('bo.project._script')
 
 @endsection
