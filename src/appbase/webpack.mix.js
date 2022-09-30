@@ -40,10 +40,12 @@ mix.js('resources/js/admin.js', 'public/js')
     'resources/css/main.css'
    ], 'public/css/main.css')
    .styles([
+    'resources/plugins/chart/Chart.min.css',
     'resources/plugins/flatpickr/flatpickr.css',
     'resources/plugins/select2/select2.min.css',
    ], 'public/css/plugins.css')
    .scripts([
+      'resources/plugins/chart/Chart.min.js',
       'resources/plugins/flatpickr/flatpickr.js',
       'resources/plugins/flatpickr/lang/id.js',
       'resources/plugins/ckeditor/ckeditor.js',
