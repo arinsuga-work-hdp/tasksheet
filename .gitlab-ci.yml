@@ -18,7 +18,7 @@
 
 .only-master-and-develop:
   only:
-    - development
+    - development1
 
 stages:          # List of stages for jobs, and their order of execution
   - build
