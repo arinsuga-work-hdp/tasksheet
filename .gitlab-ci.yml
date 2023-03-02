@@ -21,7 +21,7 @@
     - development1
 
 .exept-all:
-  only:
+  except:
     - development1
     - staging
     - production
