@@ -1,1 +1,0 @@
-function TableToExcel(e,a=""){var l,n=document.getElementById(e).outerHTML.replace(/ /g,"%20");if(a=a?a+".xls":"excel_data.xls",l=document.createElement("a"),document.body.appendChild(l),navigator.msSaveOrOpenBlob){var o=new Blob(["\ufeff",n],{type:"application/vnd.ms-excel"});navigator.msSaveOrOpenBlob(o,a)}else l.href="data:application/vnd.ms-excel, "+n,l.download=a,l.click()}
