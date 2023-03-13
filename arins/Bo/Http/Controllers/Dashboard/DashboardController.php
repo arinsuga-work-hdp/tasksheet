@@ -59,6 +59,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        return dd('tesmodif v2.0');
         // $data = $this->data->countActivitybyActivityType();
         // return dd($data);
         $data = $this->data->allOrderByIdDesc();
