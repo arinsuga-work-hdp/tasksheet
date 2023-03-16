@@ -1,31 +1,42 @@
-use dbtasksheet;
+use dbhrd;
+
+select * from users;
+
+select * from roles;
+
+select * from activitytype;
+
+select * from activitysubtype
+where activitytype_id = 3;
+
+select * from tasktype
+where activitytype_id = 3;
+
+select * from tasksubtype1
+where activitytype_id = 3;
+
+select * from tasksubtype2
+where activitytype_id = 1;
+
+select * from activitystatus;
 
 select *
+from activity
+where activitytype_id = 3;
+
+/* ------------------  */
+
+drop view activity_view;
+create view activity_view as
+select
+id, activitytype_id, activitysubtype_id, activitystatus_id, tasktype_id, tasksubtype1_id, tasksubtype2_id, name, subject, description, resolution, image, startdt, enddt, targetdt, enduser_id, enduserdept_id, endusersubdept_id, technician_id, created_at, updated_at, created_by, updated_by
+,concat(subject,' - dodol') as dodol_id
 from activity;
 
 select *
-from employee;
+from activity_view;
 
-select *
-from dept;
-
-select a.id, a.enduser_id, b.name,
-b.dept_id, c.name as enduser_dept_name,
-b.subdept_id, d.name as enduser_subdept_name
-from activity a
-left join employee b
-on a.enduser_id = b.id
-left join dept c
-on b.dept_id = c.id
-left join subdept d
-on b.subdept_id = d.id;
-
-select a.*
-from activity a;
-
-select *
-from subdept;
-
-
-
-
+select * from activity
+where activitytype_id = 1
+and activitysubtype_id = 1
+and activitystatus_id = 2;

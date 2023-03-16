@@ -18,6 +18,7 @@ $rolePost = env('POST_ROLE_CODE');
 $roleRpt = env('RPT_ROLE_CODE');
 
 use Arins\Models\Activity;
+use Arins\Models\ActivityView;
 use Arins\Models\Activitytype;
 use Arins\Models\Activitysubtype;
 use Arins\Models\Activitystatus;
@@ -31,7 +32,7 @@ Route::get('/dd', function () {
     // $data = Activitytype::with(['activities', 'tasktypes'])->get();
 
 
-    $data = Activity::with([
+    $data = ActivityView::with([
         'activitytype',
         'activitysubtype',
         'activitystatus',
@@ -40,7 +41,8 @@ Route::get('/dd', function () {
         'tasksubtype2'
         ])->get();
 
-    return $data[0]->tasksubtype2;
+    return dd($data[0]);
+    return $data[0]->dodol_id;
 });
 
 use Arins\Repositories\Activity\ActivityRepository;
