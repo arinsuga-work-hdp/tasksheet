@@ -1,6 +1,7 @@
 drop view activity_view;
 create view activity_view as
 select a.id,
+CAST(a.created_at as DATE) as activity_dt,
 a.created_by, b.name,
 a.activitytype_id, a1.name as activitytype_name,
 a.activitysubtype_id, a2.name as activitysubtype_name,
@@ -8,7 +9,6 @@ a.activitystatus_id,
 a.tasktype_id, a3.name as tasktype_name,
 a.tasksubtype1_id, a4.name as tasksubtype1_name,
 a.tasksubtype2_id, a5.name as tasksubtype2_name,
-CAST(a.created_at as DATE) as activity_dt,
 /* ALL_OPEN_CLOSE_PENDING_CANCEL */
 IF(a.activitystatus_id = 1, 1, 0) as all_open,
 IF(a.activitystatus_id = 2, 1, 0) as all_close,

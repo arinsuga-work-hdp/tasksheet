@@ -9,43 +9,17 @@ class ActivityView extends Model
 
     protected $table = 'activity_view';
 
-    protected $fillable = [
-        'activitytype_id',
-        'activitysubtype_id',
-        'activitystatus_id',
-        'tasktype_id',
-        'tasksubtype1_id',
-        'tasksubtype2_id',
-        'name',
-        'subject',
-        'description',
-        'resolution',
-        'image',
-        'startdt',
-        'enddt',
-        'enduser_id',
-        'enduserdept_id',
-        'endusersubdept_id',
-        'technician_id',
-        'created_by',
-        'updated_by'
-    ];
-
     protected $dates = [
         'startdt',
         'enddt',
         'created-at',
         'updated_at',
+        'activity_dt',
     ];
 
     public function createdBy()
     {
         return $this->belongsTo('App\User', 'created_by');
-    }
-
-    public function updatedBy()
-    {
-        return $this->belongsTo('App\User', 'updated_by');
     }
 
     public function technician()
