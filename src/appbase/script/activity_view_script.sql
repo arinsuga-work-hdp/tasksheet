@@ -20,7 +20,16 @@ IF(a.activitytype_id = 1,
 IF(a.activitytype_id = 1,
   IF(a.activitysubtype_id = 2,
       IF(a.activitystatus_id = 1, 1, 0), 0), 0) as support_incident_open,
-/* SUPPORT */
+/* SUPPORT REQUEST + INCIDENT */
+IF(a.activitytype_id = 1,
+  IF(a.activitysubtype_id = 1, 1, 0), 0) as support_request,
+IF(a.activitytype_id = 1,
+  IF(a.activitysubtype_id = 2, 1, 0), 0) as support_incident,
+/* SUPPORT PENDING */
+/* SUPPORT REQUEST + INCIDENT */
+IF(a.activitytype_id = 1,
+  IF(a.activitystatus_id = 3, 1, 0), 0) as support_pending,
+/* SUPPORT ALL */
 IF(a.activitytype_id = 1, 1, 0) as support_all
 from activity a
 left outer join activitytype a1 on a.activitytype_id = a1.id

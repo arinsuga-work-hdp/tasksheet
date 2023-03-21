@@ -135,6 +135,7 @@ return [
         
         'iso' => [
             'months' => [
+                '' => '',
                 'Januari' => 'January',
                 'Februari' => 'February',
                 'Maret' => 'March',
@@ -149,6 +150,7 @@ return [
                 'Desember' => 'December'
             ],
             'short_months' => [
+                '' => '',
                 'Jan' => 'Jan',
                 'Feb' => 'Feb',
                 'Mar' => 'Mar',
