@@ -23,7 +23,6 @@ use Arins\Models\ActivityView;
 use Arins\Models\ActivityViewjoin;
 use Arins\Repositories\ActivityView\ActivityViewRepository;
 use Arins\Repositories\ActivityView\ActivityViewRepositoryInterface;
-
 use Arins\Repositories\ActivityViewjoin\ActivityViewjoinRepositoryInterface;
 
 use Arins\Models\Activitytype;
@@ -31,7 +30,7 @@ use Arins\Models\Activitysubtype;
 use Arins\Models\Activitystatus;
 use Arins\Models\Tasktype;
 use Arins\Models\Tasksubtype1;
-Route::get('/dd', function (ActivityViewjoinRepositoryInterface $parData) {
+Route::get('/dd', function (ActivityViewRepositoryInterface $parData) {
 
     // $data = Tasksubtype1::with('activities', 'activitytype', 'tasktype')->get();
     // $data = Activitystatus::with('activities')->get();
@@ -50,6 +49,8 @@ Route::get('/dd', function (ActivityViewjoinRepositoryInterface $parData) {
 
 
     $model = new ActivityViewjoin();
+    $data = $parData;
+
     $data = $parData;
 
 

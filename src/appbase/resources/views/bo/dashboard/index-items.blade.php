@@ -5,14 +5,39 @@
         <!-- small box -->
         <div class="small-box bg-primary">
             <div class="inner">
-                <h3>150</h3>
+                <h3>Open Ticket</h3>
 
-                <p>Suport</p>
+                <div class="row">
+                    <div class="col-md-2">
+                        Incident
+                    </div>
+                    <div class="col-md-10">
+                        : {{ $viewModel->data->ticket->incident }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        Request
+                    </div>
+                    <div class="col-md-10">
+                        : {{ $viewModel->data->ticket->request }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        Pending
+                    </div>
+                    <div class="col-md-10">
+                        : {{ $viewModel->data->ticket->pending }}
+                    </div>
+                </div>
+
             </div>
             <div class="icon">
                 <i class="fa fa-ticket"></i>
             </div>
-            <a href="#" class="small-box-footer">View Detail <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 

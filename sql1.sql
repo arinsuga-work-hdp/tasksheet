@@ -26,17 +26,26 @@ where activitytype_id = 3;
 
 /* ------------------  */
 
-drop view activity_view;
-create view activity_view as
+
 select
-id, activitytype_id, activitysubtype_id, activitystatus_id, tasktype_id, tasksubtype1_id, tasksubtype2_id, name, subject, description, resolution, image, startdt, enddt, targetdt, enduser_id, enduserdept_id, endusersubdept_id, technician_id, created_at, updated_at, created_by, updated_by
-,concat(subject,' - dodol') as dodol_id
-from activity;
+sum(support_incident_open) as support_incident_open,
+sum(support_request_open) as support_request_open,
+sum(support_pending) as support_pending
+from activity_view
+where activity_dt <= '2023-03-27'
+and created_by = 10;
 
 select *
-from activity_view;
+from activity_viewjoin;
 
 select * from activity
 where activitytype_id = 1
 and activitysubtype_id = 1
 and activitystatus_id = 2;
+
+select * from users;
+
+select sum(support_request_open) as support_request_open,
+sum(support_incident_open) as support_incident_open
+from activity_view
+WHERE created_by = 10;

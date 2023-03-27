@@ -4,9 +4,14 @@ namespace Arins\Bo\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use Carbon\Carbon;
 
 use Arins\Repositories\Activitytype\ActivitytypeRepositoryInterface;
 use Arins\Repositories\Activity\ActivityRepositoryInterface;
+use Arins\Repositories\ActivityView\ActivityViewRepositoryInterface;
+use Arins\Repositories\ActivityViewjoin\ActivityViewjoinRepositoryInterface;
+
 use Arins\Facades\Response;
 use Arins\Facades\Filex;
 use Arins\Facades\Formater;
@@ -16,7 +21,8 @@ class DashboardController extends Controller
 {
 
     protected $sViewRoot;
-    protected $data, $dataActivitytype;
+    protected $data, $dataView, $dataViewjoin;
+    protected $dataActivitytype;
     protected $dataModel;
     protected $validateFields;
 
@@ -29,6 +35,8 @@ class DashboardController extends Controller
      * @return void
      */
     public function __construct(ActivityRepositoryInterface $parData,
+                                ActivityViewRepositoryInterface $parDataView,
+                                ActivityViewjoinRepositoryInterface $parDataViewjoin,
                                 ActivitytypeRepositoryInterface $parActivitytype)
     {
         $this->middleware('auth.admin');
@@ -37,6 +45,8 @@ class DashboardController extends Controller
         $psViewRoot = 'bo.dashboard';
         $this->sViewRoot = $psViewRoot;
         $this->data = $parData;
+        $this->dataView = $parDataView;
+        $this->dataViewjoin = $parDataViewjoin;
         $this->dataActivitytype = $parActivitytype;
         $this->validateFields = [
             //code array here...
@@ -59,13 +69,24 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // $data = $this->data->countActivitybyActivityType();
-        // return dd($data);
-        $data = $this->data->allOrderByIdDesc();
+        $userId = Auth::user()->id;
+        $untilDate = Carbon::today();
+        $incident = $this->dataView->countOpenSupportIncidentByUserUntilDate($userId, $untilDate);
+        $request = $this->dataView->countOpenSupportRequestByUserUntilDate($userId, $untilDate);
+        $pending = $this->dataView->countSupportPendingByUserUntilDate($userId, $untilDate);
 
-        $viewModel = Response::viewModel();
-        $viewModel->data = $data;
+        $viewModel = Response::viewModel([
+            'ticket' => [
+                            'incident' => $incident,
+                            'request' => $request,
+                            'pending' => $pending,
+                        ],
+            'attendace' => 'Attendeces List',
+        ]);
+        //$viewModel->data = $data;
 
+
+        //return dd($viewModel->data->ticket->incident);
         return view($this->sViewRoot.'.index',
         ['viewModel' => $viewModel]);
     }

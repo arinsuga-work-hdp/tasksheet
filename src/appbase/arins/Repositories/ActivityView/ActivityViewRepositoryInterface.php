@@ -7,10 +7,12 @@ use Arins\Repositories\BaseRepositoryInterface;
 //Inherit interface to BaseRepositoryInterface
 interface ActivityViewRepositoryInterface extends BaseRepositoryInterface
 {
-    function byActivitytype($id, $take=null);
-    function byActivitytypeOrderByIdAndStartdtDesc($id, $take=null);
-    function byActivitytypeStatusOpenOrderByIdAndStartdtDesc($id, $take=null);
-    function byActivitytypeTodayOrderByIdAndStartdtDesc($id, $take=null);
+    function filterByUserId($id, $where=null);
+    function filterUntilDate($untilDate, $where=null);
+
+    function countOpenSupportIncidentByUserUntilDate($userId, $untilDate);
+    function countOpenSupportRequestByUserUntilDate($userId, $untilDate);
+    function countSupportPendingByUserUntilDate($userId, $untilDate);
+
     function byActivitytypeCustom($id, $filter, $take=null);
-    // function countActivityByActivityType();
 }

@@ -12,43 +12,62 @@ class ActivityViewRepository extends BaseRepository implements ActivityViewRepos
     {
         parent::__construct($parData);
 
-        $this->inputField = [
-            'activitytype_id' => null,
-            'activitysubtype_id' => null,
-            'activitystatus_id' => null,
-            'tasktype_id' => null,
-            'tasksubtype1_id' => null,
-            'tasksubtype2_id' => null,
-            'name' => null,
-            'subject' => null,
-            'description' => null,
-            'resolution' => null,
-            'image' => null,
-            'startdt' => null,
-            'enddt' => null,
-            'enduser_id' => null,
-            'enduserdept_id' => null,
-            'endusersubdept_id' => null,
-            'technician_id' => null
-        ];
+    }
 
-        $this->validateInput = [
-            //remarkfortes 'activitysubtype_id' => 'required',
-            //remarkfortes 'tasktype_id' => 'required',
-            'subject' => 'required',
-            'description' => 'required',
-        ];
+    public function filterByUserId($id, $where=null) {
+        if (isset($where)) {
 
-        $this->validateField = [
-            //code array here...
-            'startdt' => 'required',
-            'activitytype_id' => 'required',
-            //remarkfortes 'activitysubtype_id' => 'required',
-            //remarkfortes 'tasktype_id' => 'required',
-            'subject' => 'required',
-            'description' => 'required',
-        ];
+            $result = $where->model::where('created_by', $id);
 
+        } else {
+
+            $result = $this->model::where('created_by', $id);
+
+        }
+
+
+        return $result;
+    }
+
+    public function filterUntilDate($untilDate, $where=null) {
+        if (isset($where)) {
+
+            $result = $where->whereDate('activity_dt', '<=', $untilDate);
+
+        } else {
+
+            $result = $this->whereDate('activity_dt', '<=', $untilDate);
+
+        }
+
+        return $result;
+    }
+
+    public function countOpenSupportIncidentByUserUntilDate($userId, $untilDate) {
+
+        $result = $this->filterByUserId($userId);
+        $result = $this->filterUntilDate($untilDate, $result);
+        $result = $result->sum('support_incident_open');
+
+        return $result;
+    }
+
+    public function countOpenSupportRequestByUserUntilDate($userId, $untilDate) {
+
+        $result = $this->filterByUserId($userId);
+        $result = $this->filterUntilDate($untilDate, $result);
+        $result = $result->sum('support_request_open');
+
+        return $result;
+    }
+
+    public function countSupportPendingByUserUntilDate($userId, $untilDate) {
+
+        $result = $this->filterByUserId($userId);
+        $result = $this->filterUntilDate($untilDate, $result);
+        $result = $result->sum('support_pending');
+
+        return $result;
     }
 
     function byActivitytypeCustom($id, $filter, $take=null)
@@ -108,82 +127,4 @@ class ActivityViewRepository extends BaseRepository implements ActivityViewRepos
         return $result;
     }
     
-    public function byActivitytype($id, $take=null)
-    {
-        if ($take == null) {
-            return $this->model::where('activitytype_id', $id)->get();
-        } else {
-            return $this->model::where('activitytype_id', $id)
-            ->take($take)
-            ->get();
-        }
-    }
-
-    public function byActivitytypeOrderByIdAndStartdtDesc($id, $take=null)
-    {
-        if ($take == null) {
-
-            return $this->model::where('activitytype_id', $id)
-            ->orderBy('startdt', 'desc')
-            ->orderBy('id', 'desc')
-            ->get();
-
-        } else {
-            return $this->model::where('activitytype_id', $id)
-            ->take($take)
-            ->get();
-        }
-    }
-
-    public function byActivitytypeStatusOpenOrderByIdAndStartdtDesc($id, $take=null)
-    {
-        if ($take == null) {
-
-            return $this->model::where('activitytype_id', $id)
-            ->where('activitystatus_id', 1)
-            ->orderBy('startdt', 'desc')
-            ->orderBy('id', 'desc')
-            ->get();
-
-        } else {
-            return $this->model::where('activitytype_id', $id)
-            ->where('activitystatus_id', 1)
-            ->take($take)
-            ->get();
-        }
-    }
-
-    public function byActivitytypeTodayOrderByIdAndStartdtDesc($id, $take=null)
-    {
-        if ($take == null) {
-
-            return $this->model::where('activitytype_id', $id)
-            ->whereDate('created_at', Carbon::today())
-            ->orderBy('startdt', 'desc')
-            ->orderBy('id', 'desc')
-            ->get();
-
-        } else {
-            return $this->model::where('activitytype_id', $id)
-            ->take($take)
-            ->get();
-        }
-    }
-
-    //override parent method
-    public function allOrderByDateAndIdDesc()
-    {
-        return $this->model
-               ->orderBy('startdt', 'desc')
-               ->orderBy('id', 'desc')
-               ->get();
-    }
-
-
-    // public function countActivityByActivityType() {
-
-    //     return 'hasil dari function countActivityByActivityType';
-
-    // }
-
 }
