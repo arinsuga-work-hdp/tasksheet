@@ -36,7 +36,8 @@ where activity_dt <= '2023-03-27'
 and created_by = 10;
 
 select *
-from activity_viewjoin;
+from activity_viewjoin
+where created_by is not null or updated_by is not null;
 
 select * from activity
 where activitytype_id = 1

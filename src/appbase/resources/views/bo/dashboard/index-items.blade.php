@@ -49,11 +49,76 @@
     <div class="col-lg-7 col-sm-12">
         <div class="card bg-warning">
             <div class="card-header">
-                <h3 class="card-title">Absen Karyawan</h3>
+                <h3 class="card-title">Absen Karyawan - Masih data dummy</h3>
             </div>
 
             <div class="card-body table-responsive p-0" style="height: 300px;">
-
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr class="bg-warning">
+                      <th class="bg-warning">Harin</th>
+                      <th class="bg-warning">Tanggal</th>
+                      <th class="bg-warning">Masuk</th>
+                      <th class="bg-warning">Pulang</th>
+                      <th class="bg-warning">Lama</th>
+                      <th class="bg-warning">Lembur</th>
+                      <th class="bg-warning">Catatan</th>
+                      <th class="bg-warning">Keterangan</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Senin</td>
+                      <td>3 Apr 2023</td>
+                      <td>08:00</td>
+                      <td>17:00</td>
+                      <td>8</td>
+                      <td>0</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Selasa</td>
+                      <td>4 Apr 2023</td>
+                      <td>08:00</td>
+                      <td>17:00</td>
+                      <td>8</td>
+                      <td>0</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Rabu</td>
+                      <td>5 Apr 2023</td>
+                      <td>08:00</td>
+                      <td>17:00</td>
+                      <td>8</td>
+                      <td>0</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Kamis</td>
+                      <td>6 Apr 2023</td>
+                      <td>08:00</td>
+                      <td>17:00</td>
+                      <td>8</td>
+                      <td>0</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>Senin</td>
+                      <td>10 Apr 2023</td>
+                      <td>08:00</td>
+                      <td>17:00</td>
+                      <td>8</td>
+                      <td>0</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -68,29 +133,32 @@
             </div>
 
             <div class="card-body table-responsive p-0" style="height: 300px;">
-
-            <table class="table table-head-fixed text-nowrap">
+                <table class="table table-head-fixed text-nowrap">
                   <thead>
                     <tr class="bg-pink">
-                      <th class="bg-pink">ID</th>
-                      <th class="bg-pink">User</th>
-                      <th class="bg-pink">Date</th>
+                      <th class="bg-pink">No</th>
                       <th class="bg-pink">Status</th>
-                      <th class="bg-pink">Reason</th>
+                      <th class="bg-pink">Kategori</th>
+                      <th class="bg-pink">Subjek</th>
+                      <th class="bg-pink">Deskripsi</th>
+                      <th class="bg-pink">Mulai</th>
+                      <th class="bg-pink">Selesai</th>
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($viewModel->data->mytask as $no => $item)
                     <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                      <td>{{ $no+1 }}</td>
+                      <td>{{ $item->activitystatus_name }}</td>
+                      <td>{{ $item->tasktype_name }}</td>
+                      <td>{{ $item->subject }}</td>
+                      <td>{{ $item->description }}</td>
+                      <td>{{ $item->startdt }}</td>
+                      <td>{{ $item->enddt }}</td>
                     </tr>
+                    @endforeach
                   </tbody>
                 </table>
-
-
             </div>
         </div>
     </div>

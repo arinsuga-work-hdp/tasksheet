@@ -74,6 +74,7 @@ class DashboardController extends Controller
         $incident = $this->dataView->countOpenSupportIncidentByUserUntilDate($userId, $untilDate);
         $request = $this->dataView->countOpenSupportRequestByUserUntilDate($userId, $untilDate);
         $pending = $this->dataView->countSupportPendingByUserUntilDate($userId, $untilDate);
+        $mytask = $this->dataViewjoin->getOpenSupportByUser($userId, 5);
 
         $viewModel = Response::viewModel([
             'ticket' => [
@@ -81,11 +82,12 @@ class DashboardController extends Controller
                             'request' => $request,
                             'pending' => $pending,
                         ],
-            'attendace' => 'Attendeces List',
+            'mytask' => $mytask,
         ]);
         //$viewModel->data = $data;
 
 
+        //return dd($viewModel->data->mytask[0]->subject);
         //return dd($viewModel->data->ticket->incident);
         return view($this->sViewRoot.'.index',
         ['viewModel' => $viewModel]);
