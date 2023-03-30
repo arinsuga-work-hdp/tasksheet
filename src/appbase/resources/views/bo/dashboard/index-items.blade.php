@@ -193,19 +193,43 @@
 
 </div>
 
+<!-- PROJECT -->
 <div class="row">
     <div class="col-lg-12 col-sm-12">
-        <!-- small box -->
-        <div class="small-box bg-pink">
-            <div class="inner">
-                <h3>5</h3>
-                <p>Project / Action Plan yang sedang berjalan - Status Project</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-tasks"></i>
+
+        <div class="card bg-pink">
+            <div class="card-header">
+                <h3 class="card-title">Project / Action Plan</h3>
             </div>
 
-            <a href="#" class="small-box-footer">View Detail <i class="fas fa-arrow-circle-right"></i></a>
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr class="bg-pink">
+                      <th class="bg-pink">No</th>
+                      <th class="bg-pink">Status</th>
+                      <th class="bg-pink">Jenis Project</th>
+                      <th class="bg-pink">Project</th>
+                      <th class="bg-pink">Subjek</th>
+                      <th class="bg-pink">Deskripsi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach ($viewModel->data->project as $no => $item)
+                    <tr>
+                      <td>{{ $no+1 }}</td>
+                      <td>{{ $item->activitystatus_name }}</td>
+                      <td>{{ $item->tasktype_name }}</td>
+                      <td>{{ $item->tasksubtype1_name }}</td>
+                      <td>{{ $item->subject }}</td>
+                      <td>{{ $item->description }}</td>
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+            </div>
         </div>
+
+    
     </div>
 </div>

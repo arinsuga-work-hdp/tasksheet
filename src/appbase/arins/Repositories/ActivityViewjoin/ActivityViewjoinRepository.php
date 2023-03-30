@@ -52,10 +52,23 @@ class ActivityViewjoinRepository extends BaseRepository implements ActivityViewj
         return $result;
     }
 
+    public function getTaskByUser($userId, $activitytype_id=null, $where=null, $take=null) {
 
-    public function getOpenSupportByUser($userId, $take=null) {
+        if (isset($where)) {
 
-        $result = $this->filterByUserId($userId);
+            $result = $where->filterByUserId($userId);
+
+        } else {
+
+            $result = $this->filterByUserId($userId);
+
+        }
+        
+        if (isset($activitytype_id)) {
+            
+            $result = $result->where('activitytype_id', $activitytype_id);
+
+        } //end if
 
         if ($take == null) {
             $result = $result->get();
@@ -65,6 +78,20 @@ class ActivityViewjoinRepository extends BaseRepository implements ActivityViewj
             ->orderBy('id', 'desc')
             ->take($take)->get();
         }
+
+        return $result;
+    }
+
+    public function getSupportByUser($userId, $take=null) {
+
+        $result = $this->getTaskByUser($userId, 1, null, $take);
+
+        return $result;
+    }
+
+    public function getProjectByUser($userId, $take=null) {
+
+        $result = $this->getTaskByUser($userId, 3, null, $take);
 
         return $result;
     }
