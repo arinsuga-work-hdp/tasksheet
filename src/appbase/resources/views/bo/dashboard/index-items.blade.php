@@ -164,9 +164,10 @@
     </div>
 </div>
 
+<!-- GRAFIK -->
 <div class="row">
     <div class="col-lg-6 col-sm-12">
-        <!-- small box -->
+        <!-- BAR CHART SUPPORT - INCIDENT dan REQUEST per BULAN dalam 1 TAHUN -->
         <div class="small-box bg-info">
             <div class="inner">
                 <div style="height: 250px;">
@@ -179,7 +180,7 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
-        <!-- small box -->
+        <!-- PIE CHART SUPPORT - INCIDENT BERDASAR SUB CATEGORY DALAM 1 BULAN -->
         <div class="small-box bg-success">
             <div class="inner">
 

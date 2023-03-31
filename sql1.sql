@@ -37,6 +37,8 @@ and created_by = 10;
 
 select *
 from activity_viewjoin
+where activitytype_id = 3;
+
 where created_by is not null or updated_by is not null;
 
 select * from activity
@@ -50,3 +52,16 @@ select sum(support_request_open) as support_request_open,
 sum(support_incident_open) as support_incident_open
 from activity_view
 WHERE created_by = 10;
+
+/* BAR CHART */
+select activity_year, activity_month,activity_yearmonth,
+sum(support_request) as suport_request,
+sum(support_incident) as suport_incident
+from activity_view
+group by activity_year, activity_month,activity_yearmonth
+order by activity_year, activity_month,activity_yearmonth;
+
+
+
+
+
