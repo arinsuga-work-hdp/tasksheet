@@ -29,7 +29,7 @@ use Arins\Facades\ConvertDate;
 
 class ActivityController extends BoController
 {
-    use Base, Close, Pending, Cancel, Reopen;
+    use Base, Close, Pending, Cancel, Reopen, Api;
 
     protected $dataActivitytype;
     protected $dataActivitystatus;

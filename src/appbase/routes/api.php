@@ -16,3 +16,17 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/dd', function() {
+
+    $data = [
+        'satu' => 'data 1',
+        'dua' => 'data 2',
+        'tiga' => 'data 3',
+    ];
+
+    //$result = json_encode($data);
+    $result = json_decode(json_encode($data), false);
+
+    return $result->satu;
+});
