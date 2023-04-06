@@ -1,13 +1,38 @@
 <script>
 
+$(document).ready(function() {
+
+    uriBarChart = "{{ url('/api-support-monthlybyyear/2024') }}";
+    uriPieChart = "{{ url('/api-incident-bycategory-monthinyear/2005/8') }}";
+    var labels = [];
+    var incidents = [];
+    var requests = [];
+    fetch(uriBarChart)
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data);
+      // console.log(JSON.stringify(data.year));
+      console.log(data);
+      console.log(data.year);
+      console.log(Object.values(data.incidents));
+      console.log(data.requests);
+      labels = data.months;
+      incidents = data.incidents;
+      requests = data.requests
+
+    });
+
+    console.log('==================');
+    //console.log(incidents);
     //---------------------------------------------------
     //- SUPOORT INCIDENT & REQUEST MONTHLY DATA IN 1 YEAR
     //---------------------------------------------------
     var supportChartData1 = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      // labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : labels,
       datasets: [
         {
-          label               : 'Digital Goods',
+          label               : 'Incidents',
           backgroundColor     : 'rgba(60,141,188,0.9)',
           borderColor         : 'rgba(60,141,188,0.8)',
           pointRadius          : false,
@@ -15,10 +40,11 @@
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [28, 48, 40, 19, 86, 27, 90]
+          // data                : [28, 48, 40, 19, 86, 27, 90]
+          data                : incidents
         },
         {
-          label               : 'Electronics',
+          label               : 'Requests',
           backgroundColor     : 'rgba(210, 214, 222, 1)',
           borderColor         : 'rgba(210, 214, 222, 1)',
           pointRadius         : false,
@@ -26,7 +52,8 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : [65, 59, 80, 81, 56, 55, 40]
+          // data                : [65, 59, 80, 81, 56, 55, 40]
+          data                : requests
         },
       ]
     }
@@ -94,5 +121,6 @@
       options: pieOptions      
     })
 
+}) //end document.ready
 
 </script>

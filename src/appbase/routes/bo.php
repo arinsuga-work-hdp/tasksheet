@@ -48,7 +48,8 @@ Route::group(['middleware'=>'lang'],function ()
     Route::resource('activity', 'Activity\ActivityController');
 
     //Activity Support API
-    Route::get('api-support-monthly-by-year/{year}', 'Activity\ActivityController@monthlySupportByYear')->name('monthly.support.by.year');
+    Route::get('api-support-monthlybyyear/{year}', 'Activity\ActivityController@supportMonthlybyyear')->name('api.support.monthlybyyear');
+    Route::get('api-incident-bycategory-monthinyear/{year}/{month}', 'Activity\ActivityController@incidentBycategoryMonthinyear')->name('api.incident.bycategory.monthinyear');
 
     //support
     Route::resource('support', 'Support\SupportController');
