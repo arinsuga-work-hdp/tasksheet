@@ -168,7 +168,7 @@
 <div class="row">
     <div class="col-lg-6 col-sm-12">
         <!-- BAR CHART SUPPORT - INCIDENT dan REQUEST per BULAN dalam 1 TAHUN -->
-        <div class="small-box bg-info">
+        <div class="small-box" style="background-color: #00c0ef">
             <div class="inner">
                 <div style="height: 250px;">
                     <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
