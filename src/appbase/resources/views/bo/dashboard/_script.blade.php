@@ -2,30 +2,51 @@
 
 $(document).ready(function() {
 
-    //Bar Chart
-    fetch("{{ url('/api-support-monthlybyyear/2024') }}")
-    .then(response => response.json())
-    .then(data => {
-      let labels = [];
-      let incidents = [];
-      let requests = [];
 
-      labels = data.months;
-      incidents = data.incidents;
-      requests = data.requests;
+    var barYear = 2024;
+    runBarChart("{{ url('/api-support-monthlybyyear/" + barYear + "') }}");
 
-      renderBarchart(labels, incidents, requests);
+    var pieYear = 2005;
+    var pieMonth = 8;
+    runPieChart("{{ url('/api-incident-bycategory-monthinyear/" + pieYear + "/" + pieMonth + "') }}");
 
-    });
 
-    //Pie Chart
-    fetch("{{ url('/api-incident-bycategory-monthinyear/2005/8') }}")
-    .then(response => response.json())
-    .then(data => {
+    function runBarChart(url) {
 
-      console.log(data);
+        //Bar Chart
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          let labels = [];
+          let incidents = [];
+          let requests = [];
 
-    });
+          labels = data.months;
+          incidents = data.incidents;
+          requests = data.requests;
+
+          renderBarchart(labels, incidents, requests);
+
+        });
+      
+    } //end method
+
+    function runPieChart(url) {
+      
+        //Pie Chart
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+
+          var labelScheme = [ 'Chrome', 'IE', 'FireFox', 'Safari', 'Opera', 'Navigator'];
+          var dataScheme = [700,500,400,600,300,100];
+
+          //console.log(data);
+          renderPiechart(labelScheme, dataScheme);
+
+        });
+
+    } //end method
 
 
     //---------------------------------------------------
@@ -90,22 +111,33 @@ $(document).ready(function() {
     //-------------------------------------------
     //- SUPPORT INCIDENT MONTHLY DATA BY CATEGORY
     //-------------------------------------------
-    function renderPiechart() {
+    function renderPiechart(labels, data) {
+
+        var lbScheme = labels;
+        var dtScheme = data;
+        var bgScheme = [];
+        var colorScheme = [
+          '#FF2000', '#FF7C00', '#F52394', '#800080', '#0062C6', '#00B2D4',
+          '#00AB00', '#90E200', '#FFCF00', '#7F00FF', '#C4C4C4', '#593110',
+          '#ff4c32', '#ff9632', '#f64fa9', '#cc00cc', '#0580ff', '#10d8ff',
+          '#00ee00', '#acff1b', '#ffd832', '#9832ff', '#cfcfcf', '#9d561c',
+        ];
+
+        console.log(colorScheme.length);
+        for (let i = 0; i < dtScheme.length; i++) {
+          
+          bgScheme.push(colorScheme[i]);
+          console.log(colorScheme[i]);
+
+        } //end loop
 
         //Prepare
         var supportChartData2  = {
-          labels: [
-              'Chrome', 
-              'IE',
-              'FireFox', 
-              'Safari', 
-              'Opera', 
-              'Navigator', 
-          ],
+          labels: lbScheme,
           datasets: [
             {
-              data: [700,500,400,600,300,100],
-              backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+              data: dtScheme,
+              backgroundColor : bgScheme,
             }
           ]
         }

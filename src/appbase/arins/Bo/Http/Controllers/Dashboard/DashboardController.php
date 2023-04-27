@@ -86,11 +86,7 @@ class DashboardController extends Controller
             'mytask' => $mytask,
             'project' => $project,
         ]);
-        //$viewModel->data = $data;
 
-
-        //return dd($viewModel->data->mytask[0]->subject);
-        //return dd($viewModel->data->ticket->incident);
         return view($this->sViewRoot.'.index',
         ['viewModel' => $viewModel]);
     }
