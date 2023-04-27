@@ -123,11 +123,9 @@ $(document).ready(function() {
           '#00ee00', '#acff1b', '#ffd832', '#9832ff', '#cfcfcf', '#9d561c',
         ];
 
-        console.log(colorScheme.length);
         for (let i = 0; i < dtScheme.length; i++) {
           
           bgScheme.push(colorScheme[i]);
-          console.log(colorScheme[i]);
 
         } //end loop
 
