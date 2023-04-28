@@ -84,7 +84,27 @@ $(document).ready(function() {
         var barChartOptions = {
           responsive              : true,
           maintainAspectRatio     : false,
-          datasetFill             : false
+          datasetFill             : false,
+          legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(30, 30, 30)'
+            }
+          },
+
+          scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: 'rgb(30, 30, 30)',
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: 'rgb(30, 30, 30)',
+                    }
+                }]
+            }
+
         }
 
         //Render
@@ -92,8 +112,7 @@ $(document).ready(function() {
           type: 'bar', 
           data: barChartData,
           options: barChartOptions
-        })
-
+        });
 
     } //end method
 
@@ -135,6 +154,12 @@ $(document).ready(function() {
         var pieOptions     = {
           maintainAspectRatio : false,
           responsive : true,
+          legend: {
+            display: true,
+            labels: {
+                fontColor: 'rgb(255, 255, 255)'
+            }
+          }
         }
 
         //Render
