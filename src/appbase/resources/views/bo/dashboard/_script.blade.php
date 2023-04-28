@@ -17,15 +17,8 @@ $(document).ready(function() {
         fetch(url)
         .then(response => response.json())
         .then(data => {
-          let labels = [];
-          let incidents = [];
-          let requests = [];
 
-          labels = data.months;
-          incidents = data.incidents;
-          requests = data.requests;
-
-          renderBarchart(labels, incidents, requests);
+            renderBarchart(data.months, data.incidents, data.requests);
 
         });
       
@@ -38,11 +31,7 @@ $(document).ready(function() {
         .then(response => response.json())
         .then(data => {
 
-          var labelScheme = [ 'Chrome', 'IE', 'FireFox', 'Safari', 'Opera', 'Navigator'];
-          var dataScheme = [700,500,400,600,300,100];
-
-          //console.log(data);
-          renderPiechart(labelScheme, dataScheme);
+          renderPiechart(data.labels, data.items);
 
         });
 

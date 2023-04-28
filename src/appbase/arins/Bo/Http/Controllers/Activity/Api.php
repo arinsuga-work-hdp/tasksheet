@@ -39,17 +39,14 @@ trait Api
         $data = [
             'year' => $year,
             'month' => $month,
-            'months' => [
-                'Jan','Feb','Mar','Apr','Mei','Jun',
-                'Jul','Agt','Sep','Okt','Nov','Des'
+            'labels' => [
+                'Domain','Email','Hardware','Login','Network','Others',
+                'Printers','Project Server','Server','Software','Timsheet'
+                                
             ],
-            'incidents' => [
+            'items' => [
                 5000,220,1065,1125,30,11,
-                55,22,125,156,777,58
-            ],
-            'requests' => [
-                1500,22,125,156,777,58,
-                115,220,1065,1125,30,11
+                55,22,125,156,777
             ],
         ];
 
