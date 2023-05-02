@@ -71,6 +71,7 @@ class DashboardController extends Controller
     {
         $userId = Auth::user()->id;
         $untilDate = Carbon::today();
+
         $incident = $this->dataView->countOpenSupportIncidentByUserUntilDate($userId, $untilDate);
         $request = $this->dataView->countOpenSupportRequestByUserUntilDate($userId, $untilDate);
         $pending = $this->dataView->countSupportPendingByUserUntilDate($userId, $untilDate);
@@ -88,7 +89,7 @@ class DashboardController extends Controller
         ]);
 
         return view($this->sViewRoot.'.index',
-        ['viewModel' => $viewModel]);
+        ['viewModel' => $viewModel, 'year' => $untilDate->year, 'month' => $untilDate->month]);
     }
 
 }

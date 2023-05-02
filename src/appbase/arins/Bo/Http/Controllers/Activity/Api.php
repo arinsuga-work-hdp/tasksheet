@@ -52,6 +52,7 @@ trait Api
 
         $result = json_encode($data);
 
+        // return json_encode($this->data->countByActivityType(1, $year, null));
         return $result;
     }
 

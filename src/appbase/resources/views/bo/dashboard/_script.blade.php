@@ -2,14 +2,13 @@
 
 $(document).ready(function() {
 
+    var barYear = document.getElementById('barYear').value;
+    runBarChart("{{ url('/api-support-monthlybyyear/') }}/" + barYear);
 
-    var barYear = 2024;
-    runBarChart("{{ url('/api-support-monthlybyyear/" + barYear + "') }}");
+    var pieYear = document.getElementById('pieYear').value;
+    var pieMonth = document.getElementById('pieMonth').value;
 
-    var pieYear = 2005;
-    var pieMonth = 8;
-    runPieChart("{{ url('/api-incident-bycategory-monthinyear/" + pieYear + "/" + pieMonth + "') }}");
-
+    runPieChart("{{ url('/api-incident-bycategory-monthinyear/') }}/" + pieYear + "/" + pieMonth);
 
     function runBarChart(url) {
 
@@ -30,6 +29,8 @@ $(document).ready(function() {
         fetch(url)
         .then(response => response.json())
         .then(data => {
+
+          console.log(data);
 
           renderPiechart(data.labels, data.items);
 

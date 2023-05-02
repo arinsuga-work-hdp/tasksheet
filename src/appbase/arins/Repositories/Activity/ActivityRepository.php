@@ -170,6 +170,27 @@ class ActivityRepository extends BaseRepository implements ActivityRepositoryInt
         }
     }
 
+    public function countByActivityType($activitytype_id, $year=null, $month=null)
+    {
+
+        $result = $this->model->where('activitytype_id', $activitytype_id);
+
+        if (isset($year)) {
+
+            $result = $result->whereYear('created_at', $year);
+
+        } //end if
+
+        if (isset($month)) {
+
+            $result = $result->whereYear('created_at', $month);
+
+        } //end if
+
+        return $result->groupBy('tasktype_id')->count();
+
+    }
+
     //override parent method
     public function allOrderByDateAndIdDesc()
     {

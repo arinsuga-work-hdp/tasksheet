@@ -167,6 +167,7 @@
 <!-- GRAFIK -->
 <div class="row">
     <div class="col-lg-6 col-sm-12">
+        <input id="barYear" name="barYear" type="hidden" value="{{ $year }}">
         <!-- BAR CHART SUPPORT - INCIDENT dan REQUEST per BULAN dalam 1 TAHUN -->
         <div class="small-box" style="background-color: #00c0ef">
             <div class="inner">
@@ -180,6 +181,8 @@
     </div>
 
     <div class="col-lg-6 col-sm-12">
+        <input id="pieYear" name="pieYear" type="hidden" value="{{ $year }}">
+        <input id="pieMonth" name="pieMonth" type="hidden" value="{{ $month }}">
         <!-- PIE CHART SUPPORT - INCIDENT BERDASAR SUB CATEGORY DALAM 1 BULAN -->
         <div class="small-box bg-success">
             <div class="inner">
