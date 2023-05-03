@@ -5,6 +5,7 @@ namespace Arins\Repositories\Activity;
 use Arins\Repositories\BaseRepository;
 use Arins\Repositories\Activitytype\ActivitytypeRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ActivityRepository extends BaseRepository implements ActivityRepositoryInterface
 {
@@ -173,7 +174,10 @@ class ActivityRepository extends BaseRepository implements ActivityRepositoryInt
     public function countByActivityType($activitytype_id, $year=null, $month=null)
     {
 
-        $result = $this->model->where('activitytype_id', $activitytype_id);
+        $result = $this->model
+                  ->select('tasktype_id', DB::raw('count(tasktype_id) as value'))
+                  ->where('activitytype_id', $activitytype_id)
+                  ->groupBy('tasktype_id');
 
         if (isset($year)) {
 
@@ -183,11 +187,11 @@ class ActivityRepository extends BaseRepository implements ActivityRepositoryInt
 
         if (isset($month)) {
 
-            $result = $result->whereYear('created_at', $month);
+            $result = $result->whereMonth('created_at', $month);
 
         } //end if
 
-        return $result->groupBy('tasktype_id')->count();
+        return $result->get();
 
     }
 

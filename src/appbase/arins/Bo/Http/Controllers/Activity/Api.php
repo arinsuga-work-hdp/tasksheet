@@ -36,23 +36,26 @@ trait Api
     public function incidentBycategoryMonthinyear($year, $month)
     {
 
+        $dataSource = $this->data->countByActivityType(1, $year, $month);
+        $labels = [];
+        $items = [];
+
+        foreach ($dataSource as $index => $item) {
+
+            $labels[$index] = $item->tasktype->name;
+            $items[$index] = $item->value;
+
+        } //end loop
+
         $data = [
             'year' => $year,
             'month' => $month,
-            'labels' => [
-                'Domain','Email','Hardware','Login','Network','Others',
-                'Printers','Project Server','Server','Software','Timsheet'
-                                
-            ],
-            'items' => [
-                5000,220,1065,1125,30,11,
-                55,22,125,156,777
-            ],
+            'labels' => $labels,
+            'items' => $items,
         ];
 
         $result = json_encode($data);
 
-        // return json_encode($this->data->countByActivityType(1, $year, null));
         return $result;
     }
 
