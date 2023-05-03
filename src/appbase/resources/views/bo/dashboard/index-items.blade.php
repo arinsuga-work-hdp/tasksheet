@@ -190,7 +190,7 @@
                 <div style="height: 250px;">
                     <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
-                <p style="margin-top: 20px;">Pie Chart - Incident berdasarkan sub category dalam 1 bulan</p>
+                <p style="margin-top: 20px;">Pie Chart - Incident berdasarkan sub category bulan {{ $monthText }} tahun {{ $year }}</p>
             </div>
         </div>
     </div>

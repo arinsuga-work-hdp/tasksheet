@@ -72,6 +72,13 @@ class DashboardController extends Controller
         $userId = Auth::user()->id;
         $untilDate = Carbon::today();
 
+        $year = $untilDate->year;
+        $month = $untilDate->month;
+        $months = config('a1.date.iso.months');
+        $monthKeys = array_keys($months);
+        $monthText = $monthKeys[$month];
+        
+
         $incident = $this->dataView->countOpenSupportIncidentByUserUntilDate($userId, $untilDate);
         $request = $this->dataView->countOpenSupportRequestByUserUntilDate($userId, $untilDate);
         $pending = $this->dataView->countSupportPendingByUserUntilDate($userId, $untilDate);
@@ -89,7 +96,7 @@ class DashboardController extends Controller
         ]);
 
         return view($this->sViewRoot.'.index',
-        ['viewModel' => $viewModel, 'year' => $untilDate->year, 'month' => $untilDate->month]);
+        ['viewModel' => $viewModel, 'year' => $year, 'month' => $month, 'monthText' => $monthText]);
     }
 
 }
