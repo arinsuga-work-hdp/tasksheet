@@ -62,6 +62,55 @@ group by activity_year, activity_month,activity_yearmonth
 order by activity_year, activity_month,activity_yearmonth;
 
 
+select * from activitytype;
+
+select * from tasktype
+where activitytype_id = 1;
+
+select month(created_at) as Month, a.*
+from activity a
+where a.activitytype_id = 1
+;
+
+
+select * from activity_viewjoin
+where activitytype_id = 1;
+
+select *
+from activity_view;
+
+select *
+from activity;
+
+
+select month(created_at) as bulan,
+       count(activitysubtype_id) as value
+from activity
+where activitytype_id = 1
+and activitysubtype_id = 1
+and year(created_at) = 2023
+group by month(created_at);
+
+
+select a.created_at,
+		year(a.created_at) as year,
+		month(a.created_at) as bulan,
+       a.*
+from activity a
+where a.activitytype_id = 1
+and a.activitysubtype_id = 1
+and year(a.created_at) = 2023;
+
+
+select activitysubtype_id
+from activity;
+
+
+
+select *
+from activitysubtype
+where activitytype_id = 1;
+
 
 
 

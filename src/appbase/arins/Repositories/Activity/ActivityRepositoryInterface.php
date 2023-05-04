@@ -14,4 +14,7 @@ interface ActivityRepositoryInterface extends BaseRepositoryInterface
     function byActivitytypeCustom($id, $filter, $take=null);
 
     function countByActivityType($activitytype_id, $year=null, $month=null);
+    function countByActivitySubtype(
+        $activitytype_id, $activitysubtype_id,$year=null, $month=null
+    );
 }
