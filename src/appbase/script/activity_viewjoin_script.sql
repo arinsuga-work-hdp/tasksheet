@@ -1,5 +1,4 @@
-drop view activity_viewjoin;
-create view activity_viewjoin as
+create or replace view activity_viewjoin as
 select
 a.id,
 a.activitytype_id,

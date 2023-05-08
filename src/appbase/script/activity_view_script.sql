@@ -1,6 +1,4 @@
-drop view activity_view;
-
-create view activity_view as
+create or replace view activity_view as
 select a.id,
 CAST(a.created_at as DATE) as activity_dt,
 YEAR(a.created_at) as activity_year,
