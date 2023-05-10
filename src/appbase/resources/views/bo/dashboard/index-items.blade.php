@@ -174,7 +174,7 @@
                 <div style="height: 250px;">
                     <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
-                <p style="margin-top: 20px;">Grafik Bar - Incident dan Request per Bulan selama 1 tahun</p>
+                <p style="margin-top: 20px;">Grafik Bar - Incident dan Request per Bulan tahun tahun {{ $year }}</p>
 
             </div>
         </div>
