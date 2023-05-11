@@ -18,12 +18,19 @@ $rolePost = env('POST_ROLE_CODE');
 $roleRpt = env('RPT_ROLE_CODE');
 
 use Arins\Models\Activity;
+
+use Arins\Models\ActivityView;
+use Arins\Models\ActivityViewjoin;
+use Arins\Repositories\ActivityView\ActivityViewRepository;
+use Arins\Repositories\ActivityView\ActivityViewRepositoryInterface;
+use Arins\Repositories\ActivityViewjoin\ActivityViewjoinRepositoryInterface;
+
 use Arins\Models\Activitytype;
 use Arins\Models\Activitysubtype;
 use Arins\Models\Activitystatus;
 use Arins\Models\Tasktype;
 use Arins\Models\Tasksubtype1;
-Route::get('/dd', function () {
+Route::get('/dd', function (ActivityViewRepositoryInterface $parData) {
 
     // $data = Tasksubtype1::with('activities', 'activitytype', 'tasktype')->get();
     // $data = Activitystatus::with('activities')->get();
@@ -31,7 +38,7 @@ Route::get('/dd', function () {
     // $data = Activitytype::with(['activities', 'tasktypes'])->get();
 
 
-    $data = Activity::with([
+    $data = ActivityView::with([
         'activitytype',
         'activitysubtype',
         'activitystatus',
@@ -40,7 +47,16 @@ Route::get('/dd', function () {
         'tasksubtype2'
         ])->get();
 
-    return $data[0]->tasksubtype2;
+
+    $model = new ActivityViewjoin();
+    $data = $parData;
+
+    $data = $parData;
+
+
+    return dd($data->all()[0]);
+    
+    return $data[0]->dodol_id;
 });
 
 use Arins\Repositories\Activity\ActivityRepository;

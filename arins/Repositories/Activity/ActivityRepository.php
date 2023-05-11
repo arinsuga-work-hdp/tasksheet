@@ -5,6 +5,7 @@ namespace Arins\Repositories\Activity;
 use Arins\Repositories\BaseRepository;
 use Arins\Repositories\Activitytype\ActivitytypeRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ActivityRepository extends BaseRepository implements ActivityRepositoryInterface
 {
@@ -170,6 +171,56 @@ class ActivityRepository extends BaseRepository implements ActivityRepositoryInt
         }
     }
 
+    public function countByActivityType($activitytype_id, $year=null, $month=null)
+    {
+
+        $result = $this->model
+                  ->select('tasktype_id', DB::raw('count(tasktype_id) as value'))
+                  ->where('activitytype_id', $activitytype_id)
+                  ->groupBy('tasktype_id');
+
+        if (isset($year)) {
+
+            $result = $result->whereYear('created_at', $year);
+
+        } //end if
+
+        if (isset($month)) {
+
+            $result = $result->whereMonth('created_at', $month);
+
+        } //end if
+
+        return $result->get();
+
+    }
+
+    public function countByActivitySubtype(
+        $activitytype_id, $activitysubtype_id,$year=null, $month=null
+        )
+    {
+
+        $result = $this->model
+                  ->select(DB::raw('month(created_at) as month'), DB::raw('count(tasktype_id) as value'))
+                  ->where('activitytype_id', $activitytype_id)
+                  ->where('activitysubtype_id', $activitysubtype_id)
+                  ->groupBy(DB::raw('month(created_at)'));
+
+        if (isset($year)) {
+
+            $result = $result->whereYear('created_at', $year);
+
+        } //end if
+
+        if (isset($month)) {
+
+            $result = $result->whereMonth('created_at', $month);
+
+        } //end if
+
+        return $result->get();
+    }
+
     //override parent method
     public function allOrderByDateAndIdDesc()
     {
@@ -178,12 +229,5 @@ class ActivityRepository extends BaseRepository implements ActivityRepositoryInt
                ->orderBy('id', 'desc')
                ->get();
     }
-
-
-    // public function countActivityByActivityType() {
-
-    //     return 'hasil dari function countActivityByActivityType';
-
-    // }
 
 }

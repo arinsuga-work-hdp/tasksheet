@@ -50,7 +50,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('home.index') }}" class="brand-link">
+    <a href="{{ route('dashboard') }}" class="brand-link">
       <img id="logoFull" src="{{ asset('img/'.config('a1.uiux.logo_landscape')) }}" alt="{{ config('a1.company.name','Demo') }}" class="brand-image elevation-3 logo-full">
       <img id="logoIcon" src="{{ asset('img/'.config('a1.uiux.logo_icon')) }}" alt="{{ config('a1.company.name','Demo') }}" class="brand-image elevation-3 logo-icon">
       <span class="brand-text font-weight-light"></span>

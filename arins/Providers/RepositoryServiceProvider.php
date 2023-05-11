@@ -15,6 +15,8 @@ use Arins\Repositories\Event\EventRepository;
 use Arins\Repositories\News\NewsRepository;
 
 use Arins\Repositories\Activity\ActivityRepository;
+use Arins\Repositories\ActivityView\ActivityViewRepository;
+use Arins\Repositories\ActivityViewjoin\ActivityViewjoinRepository;
 use Arins\Repositories\Activitystatus\ActivitystatusRepository;
 use Arins\Repositories\Activitytype\ActivitytypeRepository;
 use Arins\Repositories\Activitysubtype\ActivitysubtypeRepository;
@@ -41,6 +43,8 @@ use Arins\Models\Event;
 use Arins\Models\News;
 
 use Arins\Models\Activity;
+use Arins\Models\ActivityView;
+use Arins\Models\ActivityViewjoin;
 use Arins\Models\Activitystatus;
 use Arins\Models\Activitysubtype;
 use Arins\Models\Activitytype;
@@ -177,6 +181,28 @@ class RepositoryServiceProvider extends ServiceProvider
             {
                 $model = new Activity();
                 $modelRepository = new ActivityRepository($model);
+                return $modelRepository;
+            }
+        );
+
+        //ActivityView
+        $this->app->bind(
+            'Arins\Repositories\ActivityView\ActivityViewRepositoryInterface',
+            function()
+            {
+                $model = new ActivityView();
+                $modelRepository = new ActivityViewRepository($model);
+                return $modelRepository;
+            }
+        );
+
+        //ActivityViewjoin
+        $this->app->bind(
+            'Arins\Repositories\ActivityViewjoin\ActivityViewjoinRepositoryInterface',
+            function()
+            {
+                $model = new ActivityViewjoin();
+                $modelRepository = new ActivityViewjoinRepository($model);
                 return $modelRepository;
             }
         );
