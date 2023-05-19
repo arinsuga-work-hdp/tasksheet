@@ -47,23 +47,23 @@
     </div>
 
     <div class="col-lg-7 col-sm-12">
-        <div class="card bg-warning">
-            <div class="card-header">
+        <div class="card">
+            <div class="card-header bg-warning">
                 <h3 class="card-title">Absen Karyawan - Masih data dummy</h3>
             </div>
 
             <div class="card-body table-responsive p-0" style="height: 300px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
-                    <tr class="bg-warning">
-                      <th class="bg-warning">Harin</th>
-                      <th class="bg-warning">Tanggal</th>
-                      <th class="bg-warning">Masuk</th>
-                      <th class="bg-warning">Pulang</th>
-                      <th class="bg-warning">Lama</th>
-                      <th class="bg-warning">Lembur</th>
-                      <th class="bg-warning">Catatan</th>
-                      <th class="bg-warning">Keterangan</th>
+                    <tr>
+                      <th>Harin</th>
+                      <th>Tanggal</th>
+                      <th>Masuk</th>
+                      <th>Pulang</th>
+                      <th>Lama</th>
+                      <th>Lembur</th>
+                      <th>Catatan</th>
+                      <th>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -127,22 +127,22 @@
 <!-- MY TASK -->
 <div class="row" style="height: ">
     <div class="col-lg-12 col-sm-12">
-        <div class="card bg-pink">
-            <div class="card-header">
+        <div class="card">
+            <div class="card-header bg-info">
                 <h3 class="card-title">My Task</h3>
             </div>
 
             <div class="card-body table-responsive p-0" style="height: 300px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
-                    <tr class="bg-pink">
-                      <th class="bg-pink">No</th>
-                      <th class="bg-pink">Status</th>
-                      <th class="bg-pink">Kategori</th>
-                      <th class="bg-pink">Subjek</th>
-                      <th class="bg-pink">Deskripsi</th>
-                      <th class="bg-pink">Mulai</th>
-                      <th class="bg-pink">Selesai</th>
+                    <tr>
+                      <th>No</th>
+                      <th>Status</th>
+                      <th>Kategori</th>
+                      <th>Subjek</th>
+                      <th>Deskripsi</th>
+                      <th>Mulai</th>
+                      <th>Selesai</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -169,7 +169,7 @@
     <div class="col-lg-6 col-sm-12">
         <input id="barYear" name="barYear" type="hidden" value="{{ $year }}">
         <!-- BAR CHART SUPPORT - INCIDENT dan REQUEST per BULAN dalam 1 TAHUN -->
-        <div class="small-box" style="background-color: #00c0ef">
+        <div class="small-box">
             <div class="inner">
                 <div style="height: 250px;">
                     <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
@@ -184,7 +184,7 @@
         <input id="pieYear" name="pieYear" type="hidden" value="{{ $year }}">
         <input id="pieMonth" name="pieMonth" type="hidden" value="{{ $month }}">
         <!-- PIE CHART SUPPORT - INCIDENT BERDASAR SUB CATEGORY DALAM 1 BULAN -->
-        <div class="small-box bg-success">
+        <div class="small-box">
             <div class="inner">
 
                 <div style="height: 250px;">
@@ -201,21 +201,21 @@
 <div class="row">
     <div class="col-lg-12 col-sm-12">
 
-        <div class="card bg-pink">
-            <div class="card-header">
+        <div class="card">
+            <div class="card-header bg-success">
                 <h3 class="card-title">Project / Action Plan</h3>
             </div>
 
             <div class="card-body table-responsive p-0" style="height: 300px;">
                 <table class="table table-head-fixed text-nowrap">
                   <thead>
-                    <tr class="bg-pink">
-                      <th class="bg-pink">No</th>
-                      <th class="bg-pink">Status</th>
-                      <th class="bg-pink">Jenis Project</th>
-                      <th class="bg-pink">Project</th>
-                      <th class="bg-pink">Subjek</th>
-                      <th class="bg-pink">Deskripsi</th>
+                    <tr>
+                      <th>No</th>
+                      <th>Status</th>
+                      <th>Jenis Project</th>
+                      <th>Project</th>
+                      <th>Subjek</th>
+                      <th>Deskripsi</th>
                     </tr>
                   </thead>
                   <tbody>

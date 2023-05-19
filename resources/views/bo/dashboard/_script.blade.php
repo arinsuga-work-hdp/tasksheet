@@ -155,9 +155,6 @@ $(document).ready(function() {
           responsive : true,
           legend: {
             display: true,
-            labels: {
-                fontColor: 'rgb(255, 255, 255)'
-            }
           }
         }
 
