@@ -38,11 +38,6 @@ class User extends Authenticatable
     ];
 
 
-    public function badge()
-    {
-        return $this->hasOne('Arins\Models\Badge');
-    }
-
     public function activities()
     {
         return $this->hasMany('Arins\Models\Activity');

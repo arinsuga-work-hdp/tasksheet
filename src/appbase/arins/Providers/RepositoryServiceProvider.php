@@ -31,7 +31,7 @@ use Arins\Repositories\Subdept\SubdeptRepository;
 
 use Arins\Repositories\Technician\TechnicianRepository;
 
-use Arins\Repositories\Badge\BadgeRepository;
+use Arins\Repositories\Absensi\AbsensiRepository;
 
 
 //Models
@@ -59,7 +59,7 @@ use Arins\Models\Job;
 use Arins\Models\Dept;
 use Arins\Models\Subdept;
 
-use Arins\Models\Badge;
+use Arins\Models\Absensi;
 
 //todo
 use Arins\Models\Gender;
