@@ -31,6 +31,8 @@ use Arins\Repositories\Subdept\SubdeptRepository;
 
 use Arins\Repositories\Technician\TechnicianRepository;
 
+use Arins\Repositories\Badge\BadgeRepository;
+
 
 //Models
 use App\User;
@@ -56,6 +58,8 @@ use Arins\Models\Employee;
 use Arins\Models\Job;
 use Arins\Models\Dept;
 use Arins\Models\Subdept;
+
+use Arins\Models\Badge;
 
 //todo
 use Arins\Models\Gender;

@@ -18,7 +18,7 @@ class Dept extends Model
     ];
 
     protected $dates = [
-        'created-at',
+        'created_at',
         'updated_at'
     ];
 

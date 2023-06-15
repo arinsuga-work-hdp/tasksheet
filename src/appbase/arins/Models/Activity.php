@@ -34,7 +34,7 @@ class Activity extends Model
     protected $dates = [
         'startdt',
         'enddt',
-        'created-at',
+        'created_at',
         'updated_at',
     ];
 

@@ -97,7 +97,7 @@ class Employee extends Model
             'probend_dt',
             'contstart_dt',
             'contend_dt',
-            'created-at',
+            'created_at',
             'updated_at'
         ];
 

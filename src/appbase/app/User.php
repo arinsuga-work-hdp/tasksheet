@@ -37,6 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime:d/m/Y',
     ];
 
+
+    public function badge()
+    {
+        return $this->hasOne('Arins\Models\Badge');
+    }
+
     public function activities()
     {
         return $this->hasMany('Arins\Models\Activity');
