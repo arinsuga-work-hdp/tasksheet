@@ -41,4 +41,8 @@ class Absensi extends Model
         return $this->belongsTo('App\User');
     }        
 
+    public function employee() {
+        return $this->belongsTo('Arins\Models\Employee');
+    }        
+
 }
