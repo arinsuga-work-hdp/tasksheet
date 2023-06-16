@@ -5,6 +5,7 @@ namespace Arins\Bo\Http\Controllers\Employee;
 use Arins\Http\Controllers\BoController;
 use Arins\Traits\Http\Controller\Base;
 
+use Arins\BO\Repositories\User\UserRepositoryInterface;
 use Arins\Repositories\Employee\EmployeeRepositoryInterface;
 use Arins\Repositories\Job\JobRepositoryInterface;
 use Arins\Repositories\Dept\DeptRepositoryInterface;
@@ -14,9 +15,10 @@ class EmployeeController extends BoController
 {
     use Base;
 
-    protected $dataDept, $dataSubdept, $dataJob;
+    protected $dataDept, $dataSubdept, $dataJob, $dataUser;
 
     public function __construct(EmployeeRepositoryInterface $parData,
+                                UserRepositoryInterface $parUser,   
                                 DeptRepositoryInterface $parDept,
                                 SubdeptRepositoryInterface $parSubdept,
                                 JobRepositoryInterface $parJob)
@@ -30,11 +32,13 @@ class EmployeeController extends BoController
         $this->dataDept = $parDept;
         $this->dataSubdept = $parSubdept;
         $this->dataJob = $parJob;
+        $this->dataUser = $parUser;
 
         //Pakai cara ini jika create dan edit additional data nya sama
         //Cara lain adalah buat method [actionname]AdditionalData dan
         //tempatkan array dibawah di dalam method tersebut
         $this->dataModel = [
+            'user' => $this->dataUser->allBO(),
             'subdept' => $this->dataSubdept->all(),
             'job' => $this->dataJob->all()];        
     }

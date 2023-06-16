@@ -13,6 +13,7 @@ class Employee extends Model
         'user_id',
         //personal
         'nik',
+        'noabsen',
         'name',
         'birth_dt',
         'birth_place',
@@ -117,4 +118,9 @@ class Employee extends Model
     public function job() {
         return $this->belongsTo('Arins\Models\Job');
     }        
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }        
+
 }

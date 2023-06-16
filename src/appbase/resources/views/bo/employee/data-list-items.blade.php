@@ -3,7 +3,8 @@
         <tr>
             <th style="width: 5%;"></th>
             <th style="width: 5%;">NIK</th>
-            <th style="width: 40%;">Nama</th>
+            <th style="width: 5%;">No.Absen</th>
+            <th style="width: 35%;">Nama</th>
             <th style="width: 15%;">Departemen</th>
             <th style="width: 15%;">Jabatan</th>
             <th style="width: 20%;">Keterangan</th>
@@ -19,6 +20,7 @@
                     </div>
                 </td>
                 <td>{{ $item->nik }}</td>
+                <td>{{ $item->noabsen }}</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->subdept->name }}</td>
                 <td>{{ $item->job->name }}</td>

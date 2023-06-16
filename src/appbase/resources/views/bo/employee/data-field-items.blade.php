@@ -49,6 +49,42 @@ margin-left: auto; margin-right:auto;">
 
       <!-- input text -->
       <div class="form-group">
+        <label>No Absen / Badgeno</label>
+        <input type="text" {{ $disabled }} id="noabsen" name="noabsen" class="form-control" placeholder=""
+        value="{{ ($errors->any() ? old('noabsen') : $viewModel->data->noabsen ) }}">
+        <p class="text-red">{{ $errors->first('noabsen') }}</p>
+      </div>
+
+      <!-- text input:text -->
+      <div class="form-group">
+        <label>User ID</label>
+        @if ($fieldEnabled == true)
+          <select name="user_id" class="form-control select2">
+                @foreach ($user as $key => $item)
+
+                  @if ($errors->any())
+                    {{ ($item->id == old('user_id') ? $selected = 'selected' : $selected = '') }}
+                  @else
+                    {{ ( $item->id == $viewModel->data->user_id ) ? $selected = 'selected' : $selected = '' }}
+                  @endif
+                  <option {{ $selected }} value="{{ $item->id }}">{{ $item->email }}</option>
+                  
+                @endforeach
+            </select>
+        @else
+          <input type="hidden" name="user_id" value="{{ $viewModel->data->user_id }}" readonly>
+          <div class="form-group">
+              <input disabled type="text" value="{{ $viewModel->data->user->email }}" class="form-control">
+          </div>
+        @endif
+        <p class="text-red">{{ $errors->first('user_id') }}</p>
+
+      </div>
+
+      <hr>
+
+      <!-- input text -->
+      <div class="form-group">
         <label>Nama</label>
         <input type="text" {{ $disabled }} id="name" name="name" class="form-control" placeholder=""
         value="{{ ( $errors->any() ? old('name') : $viewModel->data->name ) }}">
@@ -59,7 +95,7 @@ margin-left: auto; margin-right:auto;">
       <div class="form-group">
         <label>Departemen</label>
         @if ($fieldEnabled == true)
-          <select name="subdept_id" class="form-control">
+          <select name="subdept_id" class="form-control select2">
                 @foreach ($subdept as $key => $item)
 
                   @if ($errors->any())
@@ -85,7 +121,7 @@ margin-left: auto; margin-right:auto;">
       <div class="form-group">
         <label>Jabatan</label>
         @if ($fieldEnabled == true)
-          <select name="job_id" class="form-control">
+          <select name="job_id" class="form-control select2">
                 @foreach ($job as $key => $item)
 
                   @if ($errors->any())

@@ -27,4 +27,10 @@ class UserRepository extends BaseRepository
         //return 'Berhasil allBo';
     }
 
+    public function allBO()
+    {
+        return $this->data->where('bo', true)->get();
+        //return 'Berhasil allBo';
+    }
+
 }
