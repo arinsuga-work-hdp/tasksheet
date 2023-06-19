@@ -32,6 +32,8 @@ use Arins\Repositories\Subdept\SubdeptRepository;
 use Arins\Repositories\Technician\TechnicianRepository;
 
 use Arins\Repositories\Absensi\AbsensiRepository;
+use Arins\Repositories\UserabsensiView\UserabsensiViewRepository;
+
 
 
 //Models
@@ -60,6 +62,7 @@ use Arins\Models\Dept;
 use Arins\Models\Subdept;
 
 use Arins\Models\Absensi;
+use Arins\Models\UserabsensiView;
 
 //todo
 use Arins\Models\Gender;
@@ -328,6 +331,28 @@ class RepositoryServiceProvider extends ServiceProvider
             {
                 $model = new Employee();
                 $modelRepository = new EmployeeRepository($model);
+                return $modelRepository;
+            }
+        );
+
+        //Absensi
+        $this->app->bind(
+            'Arins\Repositories\Absensi\AbsensiRepositoryInterface',
+            function()
+            {
+                $model = new Absensi();
+                $modelRepository = new AbsensiRepository($model);
+                return $modelRepository;
+            }
+        );
+
+        //Userabsensi
+        $this->app->bind(
+            'Arins\Repositories\UserabsensiView\UserabsensiViewRepositoryInterface',
+            function()
+            {
+                $model = new UserabsensiView();
+                $modelRepository = new UserabsensiViewRepository($model);
                 return $modelRepository;
             }
         );

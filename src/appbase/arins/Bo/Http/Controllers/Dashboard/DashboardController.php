@@ -11,6 +11,7 @@ use Arins\Repositories\Activitytype\ActivitytypeRepositoryInterface;
 use Arins\Repositories\Activity\ActivityRepositoryInterface;
 use Arins\Repositories\ActivityView\ActivityViewRepositoryInterface;
 use Arins\Repositories\ActivityViewjoin\ActivityViewjoinRepositoryInterface;
+use Arins\Repositories\Userabsensi\UserabsensiRepositoryInterface;
 
 use Arins\Facades\Response;
 use Arins\Facades\Filex;

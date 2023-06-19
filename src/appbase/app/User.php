@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function absensies()
     {
-        return $this->hasMany('Arins\Models\Absensi');
+        return $this->hasMany('Arins\Models\UserabsensiView');
     }
 
     public function activities()
