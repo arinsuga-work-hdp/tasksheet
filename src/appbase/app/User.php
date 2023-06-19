@@ -38,6 +38,11 @@ class User extends Authenticatable
     ];
 
 
+    public function absensies()
+    {
+        return $this->hasMany('Arins\Models\Absensi');
+    }
+
     public function activities()
     {
         return $this->hasMany('Arins\Models\Activity');
