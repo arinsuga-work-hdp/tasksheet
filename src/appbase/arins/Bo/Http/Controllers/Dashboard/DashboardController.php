@@ -11,7 +11,7 @@ use Arins\Repositories\Activitytype\ActivitytypeRepositoryInterface;
 use Arins\Repositories\Activity\ActivityRepositoryInterface;
 use Arins\Repositories\ActivityView\ActivityViewRepositoryInterface;
 use Arins\Repositories\ActivityViewjoin\ActivityViewjoinRepositoryInterface;
-use Arins\Repositories\Userabsensi\UserabsensiRepositoryInterface;
+use Arins\Repositories\UserabsensiView\UserabsensiViewRepositoryInterface;
 
 use Arins\Facades\Response;
 use Arins\Facades\Filex;
@@ -23,6 +23,7 @@ class DashboardController extends Controller
 
     protected $sViewRoot;
     protected $data, $dataView, $dataViewjoin;
+    protected $dataAbsensiView;
     protected $dataActivitytype;
     protected $dataModel;
     protected $validateFields;
@@ -38,7 +39,8 @@ class DashboardController extends Controller
     public function __construct(ActivityRepositoryInterface $parData,
                                 ActivityViewRepositoryInterface $parDataView,
                                 ActivityViewjoinRepositoryInterface $parDataViewjoin,
-                                ActivitytypeRepositoryInterface $parActivitytype)
+                                ActivitytypeRepositoryInterface $parActivitytype,
+                                UserabsensiViewRepositoryInterface $parDataAbsensiView)
     {
         $this->middleware('auth.admin');
         $this->middleware('is.admin');
@@ -49,6 +51,7 @@ class DashboardController extends Controller
         $this->dataView = $parDataView;
         $this->dataViewjoin = $parDataViewjoin;
         $this->dataActivitytype = $parActivitytype;
+        $this->dataAbsensiView = $parDataAbsensiView;
         $this->validateFields = [
             //code array here...
             'startdt' => 'required',
@@ -85,6 +88,9 @@ class DashboardController extends Controller
         $pending = $this->dataView->countSupportPendingByUserUntilDate($userId, $untilDate);
         $mytask = $this->dataViewjoin->getSupportByUser($userId, 5);
         $project = $this->dataViewjoin->getProjectByUser($userId, 5);
+        $absensi = $this->dataAbsensiView->byUserId($userId, 10);
+        
+        return dd($absensi);
 
         $viewModel = Response::viewModel([
             'ticket' => [
