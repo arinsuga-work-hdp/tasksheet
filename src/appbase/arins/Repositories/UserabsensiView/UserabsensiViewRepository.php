@@ -40,4 +40,21 @@ class UserabsensiViewRepository extends BaseRepository implements UserabsensiVie
         return $result;
     }
 
+    function byUserIdYearMonth($id, $yearMonth=null, $take=null)
+    {
+        $result = $this->model::where('user_id', $id);
+
+        if (isset($yearMonth)) {
+            $result = $where->whereDate('tgl', '<=', $untilDate);
+        }
+
+        if ($take == null) {
+            $result = $result->get();
+        } else {
+            $result = $result->take($take)->get();
+        }
+
+        return $result;
+    }
+
 }

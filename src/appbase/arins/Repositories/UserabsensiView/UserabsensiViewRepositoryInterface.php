@@ -8,4 +8,5 @@ use Arins\Repositories\BaseRepositoryInterface;
 interface UserabsensiViewRepositoryInterface extends BaseRepositoryInterface
 {
     function byUserId($id, $take=null);
+    function byUserIdYearMonth($id, $yearMonth=null, $take=null);
 }

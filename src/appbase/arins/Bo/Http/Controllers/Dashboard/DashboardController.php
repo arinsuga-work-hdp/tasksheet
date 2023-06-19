@@ -75,6 +75,7 @@ class DashboardController extends Controller
     {
         $userId = Auth::user()->id;
         $untilDate = Carbon::today();
+        return dd($untilDate);
 
         $year = $untilDate->year;
         $month = $untilDate->month;
@@ -104,6 +105,14 @@ class DashboardController extends Controller
 
         return view($this->sViewRoot.'.index',
         ['viewModel' => $viewModel, 'year' => $year, 'month' => $month, 'monthText' => $monthText]);
+    }
+
+    protected function filters($request) {
+        $filter = json_decode(json_encode([
+            'tgl' => ConvertDate::strDatetimeToDate($request->input('tgl')),
+        ]));
+
+        return $filter;
     }
 
 }
