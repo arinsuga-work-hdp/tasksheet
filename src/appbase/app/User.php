@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime:d/m/Y',
     ];
 
+    public function employee()
+    {
+        return $this->hasOne('Arins\Models\Employee');
+    }
 
     public function absensies()
     {

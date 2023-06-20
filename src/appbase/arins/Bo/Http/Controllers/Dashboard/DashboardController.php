@@ -73,9 +73,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
+        //return dd($user->employee->name);
+
         $userId = Auth::user()->id;
         $untilDate = Carbon::today();
-        return dd($untilDate);
+        $yearMonth = $untilDate->year. str_pad($untilDate->month, 2, '0', STR_PAD_LEFT);
 
         $year = $untilDate->year;
         $month = $untilDate->month;
@@ -89,9 +93,39 @@ class DashboardController extends Controller
         $pending = $this->dataView->countSupportPendingByUserUntilDate($userId, $untilDate);
         $mytask = $this->dataViewjoin->getSupportByUser($userId, 5);
         $project = $this->dataViewjoin->getProjectByUser($userId, 5);
-        $absensi = $this->dataAbsensiView->byUserId($userId, 10);
-        
-        return dd($absensi);
+        $absensiView = $this->dataAbsensiView->byUserIdYearMonth($userId, $yearMonth, 10);
+
+
+        $absensiTemp = array();
+        foreach ($absensiView as $index => $item) {
+            # code...
+            array_push($absensiTemp, [
+                'hari' => 'Senin',
+                'tanggal' => \Arins\Facades\Formater::dateMonth($item->tgl),
+                'masuk' => $item->masuk,
+                'keluar' => $item->keluar,
+                'lama' => $item->work,
+                'lembur' => $item->overtime,
+                'catatan' => $item->leavetype,
+                'keterangan' => $item->remark,
+            ]);
+        } //end loop
+
+        $absensi = json_decode(json_encode($absensiTemp));
+
+        // return dd(
+        //     [
+        //         'absensiTemp' => $absensiTemp,
+        //         'absensi' => $absensi,
+        //     ]
+        // );
+
+        // return dd([
+        //     'carbon' => now(),
+        //     'tgl' => $absensi[0]->tgl,
+        //     'tgl_format' => \Arins\Facades\Formater::dateMonth($absensi[0]->tgl),
+        //     ]
+        // );
 
         $viewModel = Response::viewModel([
             'ticket' => [
@@ -101,6 +135,7 @@ class DashboardController extends Controller
                         ],
             'mytask' => $mytask,
             'project' => $project,
+            'absensi' => $absensi,
         ]);
 
         return view($this->sViewRoot.'.index',

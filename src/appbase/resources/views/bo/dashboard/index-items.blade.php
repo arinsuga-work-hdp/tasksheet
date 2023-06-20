@@ -49,7 +49,7 @@
     <div class="col-lg-7 col-sm-12">
         <div class="card">
             <div class="card-header bg-warning">
-                <h3 class="card-title">Absen Karyawan - Masih data dummy</h3>
+                <h3 class="card-title">Absen Karyawan - {{ Auth::user()->employee->name }}</h3>
             </div>
 
             <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -77,46 +77,20 @@
                       <td></td>
                       <td></td>
                     </tr>
+
+                    @foreach ($viewModel->data->absensi as $no => $item)
                     <tr>
-                      <td>Selasa</td>
-                      <td>4 Apr 2023</td>
-                      <td>08:00</td>
-                      <td>17:00</td>
-                      <td>8</td>
-                      <td>0</td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $item->hari }}</td>
+                      <td>{{ $item->tanggal }}</td>
+                      <td>{{ $item->masuk }}</td>
+                      <td>{{ $item->keluar }}</td>
+                      <td>{{ $item->lama }}</td>
+                      <td>{{ $item->lembur }}</td>
+                      <td>{{ $item->catatan }}</td>
+                      <td>{{ $item->keterangan }}</td>
                     </tr>
-                    <tr>
-                      <td>Rabu</td>
-                      <td>5 Apr 2023</td>
-                      <td>08:00</td>
-                      <td>17:00</td>
-                      <td>8</td>
-                      <td>0</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>Kamis</td>
-                      <td>6 Apr 2023</td>
-                      <td>08:00</td>
-                      <td>17:00</td>
-                      <td>8</td>
-                      <td>0</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>Senin</td>
-                      <td>10 Apr 2023</td>
-                      <td>08:00</td>
-                      <td>17:00</td>
-                      <td>8</td>
-                      <td>0</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                    @endforeach
+                    
                   </tbody>
                 </table>
             </div>

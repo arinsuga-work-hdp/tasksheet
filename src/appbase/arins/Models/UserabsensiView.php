@@ -8,10 +8,13 @@ class UserabsensiView extends Model
 {
 
     protected $table = 'userabsensi_view';
+    protected $fillable = [
+
+    ];
 
     protected $dates = [
         'tgl',
-        'created-at',
+        'created_at',
         'updated_at',
     ];
 

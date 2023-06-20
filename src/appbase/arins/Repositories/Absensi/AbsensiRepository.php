@@ -13,22 +13,10 @@ class AbsensiRepository extends BaseRepository implements AbsensiRepositoryInter
 
         $this->inputField = [
             //code array here...
-            'idabsen' => null,
-            'badgeno' => null,
-            'tgl' => null,
-            'daytype' => null,
-            'masuk' => null,
-            'keluar' => null,
-            'work' => null,
-            'overtime' => null,
-            'leavetype' => null,
-            'remark' => null,
         ];
 
         $this->validateField = [
             //code array here...
-            'badgeno' => 'required',
-            'tgl' => 'required',
         ];
 
     }

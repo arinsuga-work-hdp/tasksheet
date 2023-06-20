@@ -27,6 +27,17 @@ class UserabsensiViewRepository extends BaseRepository implements UserabsensiVie
 
     }
 
+    function all($take=null)
+    {
+        if ($take == null) {
+            $result = $this->model::get();
+        } else {
+            $result = $this->model::take($take)->get();
+        }
+
+        return $result;
+    }
+
     function byUserId($id, $take=null)
     {
         $result = $this->model::where('user_id', $id);
@@ -45,7 +56,7 @@ class UserabsensiViewRepository extends BaseRepository implements UserabsensiVie
         $result = $this->model::where('user_id', $id);
 
         if (isset($yearMonth)) {
-            $result = $where->whereDate('tgl', '<=', $untilDate);
+            $result = $result->where('absensi_yearmonth', $yearMonth);
         }
 
         if ($take == null) {
