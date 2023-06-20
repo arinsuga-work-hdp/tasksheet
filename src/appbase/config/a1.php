@@ -194,6 +194,18 @@ return [
                 'Jm' => 'Fr',
                 'Sb' => 'Sa'
             ],
+
+            'hari' => [
+                '',
+                'Senin',
+                'Selasa',
+                'Rabu',
+                'Kamis',
+                'Jumat',
+                'Sabtu',
+                'Minggu',
+            ],
+
         
         ],
     ],

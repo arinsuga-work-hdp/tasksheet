@@ -75,8 +75,6 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
 
-        //return dd($user->employee->name);
-
         $userId = Auth::user()->id;
         $untilDate = Carbon::today();
         $yearMonth = $untilDate->year. str_pad($untilDate->month, 2, '0', STR_PAD_LEFT);
@@ -95,12 +93,11 @@ class DashboardController extends Controller
         $project = $this->dataViewjoin->getProjectByUser($userId, 5);
         $absensiView = $this->dataAbsensiView->byUserIdYearMonth($userId, $yearMonth, 10);
 
-
         $absensiTemp = array();
         foreach ($absensiView as $index => $item) {
             # code...
             array_push($absensiTemp, [
-                'hari' => 'Senin',
+                'hari' => config('a1.date.iso.hari')[$item->tgl->dayOfWeek],
                 'tanggal' => \Arins\Facades\Formater::dateMonth($item->tgl),
                 'masuk' => $item->masuk,
                 'keluar' => $item->keluar,
@@ -112,20 +109,6 @@ class DashboardController extends Controller
         } //end loop
 
         $absensi = json_decode(json_encode($absensiTemp));
-
-        // return dd(
-        //     [
-        //         'absensiTemp' => $absensiTemp,
-        //         'absensi' => $absensi,
-        //     ]
-        // );
-
-        // return dd([
-        //     'carbon' => now(),
-        //     'tgl' => $absensi[0]->tgl,
-        //     'tgl_format' => \Arins\Facades\Formater::dateMonth($absensi[0]->tgl),
-        //     ]
-        // );
 
         $viewModel = Response::viewModel([
             'ticket' => [
