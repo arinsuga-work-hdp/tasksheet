@@ -59,6 +59,7 @@ class UserabsensiViewRepository extends BaseRepository implements UserabsensiVie
             $result = $result->where('absensi_yearmonth', $yearMonth);
         }
 
+        $result = $result->orderBy('tgl', 'desc');
         if ($take == null) {
             $result = $result->get();
         } else {

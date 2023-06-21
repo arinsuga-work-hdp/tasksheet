@@ -67,25 +67,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Senin</td>
-                      <td>3 Apr 2023</td>
-                      <td>08:00</td>
-                      <td>17:00</td>
-                      <td>8</td>
-                      <td>0</td>
-                      <td></td>
-                      <td></td>
-                    </tr>
 
                     @foreach ($viewModel->data->absensi as $no => $item)
                     <tr>
                       <td>{{ $item->hari }}</td>
                       <td>{{ $item->tanggal }}</td>
-                      <td>{{ $item->masuk }}</td>
-                      <td>{{ $item->keluar }}</td>
-                      <td>{{ $item->lama }}</td>
-                      <td>{{ $item->lembur }}</td>
+                      <td class="text-center">{{ $item->masuk }}</td>
+                      <td class="text-center">{{ $item->keluar }}</td>
+                      <td class="text-center">{{ $item->lama }}</td>
+                      <td class="text-center">{{ $item->lembur }}</td>
                       <td>{{ $item->catatan }}</td>
                       <td>{{ $item->keterangan }}</td>
                     </tr>
