@@ -5,7 +5,7 @@ namespace Arins\Bo\Http\Controllers\Employee;
 use Arins\Http\Controllers\BoController;
 use Arins\Traits\Http\Controller\Base;
 
-use Arins\BO\Repositories\User\UserRepositoryInterface;
+use Arins\Bo\Repositories\User\UserRepositoryInterface;
 use Arins\Repositories\Employee\EmployeeRepositoryInterface;
 use Arins\Repositories\Job\JobRepositoryInterface;
 use Arins\Repositories\Dept\DeptRepositoryInterface;

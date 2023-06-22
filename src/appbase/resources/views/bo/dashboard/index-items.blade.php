@@ -49,7 +49,7 @@
     <div class="col-lg-7 col-sm-12">
         <div class="card">
             <div class="card-header bg-warning">
-                <h3 class="card-title">Absen Karyawan - {{ Auth::user()->employee->name }}</h3>
+                <h3 class="card-title">Absen Karyawan - {{ isset(Auth::user()->employee) ? Auth::user()->employee->name : '' }}</h3>
             </div>
 
             <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -68,18 +68,23 @@
                   </thead>
                   <tbody>
 
-                    @foreach ($viewModel->data->absensi as $no => $item)
-                    <tr>
-                      <td>{{ $item->hari }}</td>
-                      <td>{{ $item->tanggal }}</td>
-                      <td class="text-center">{{ $item->masuk }}</td>
-                      <td class="text-center">{{ $item->keluar }}</td>
-                      <td class="text-center">{{ $item->lama }}</td>
-                      <td class="text-center">{{ $item->lembur }}</td>
-                      <td>{{ $item->catatan }}</td>
-                      <td>{{ $item->keterangan }}</td>
-                    </tr>
-                    @endforeach
+                    @if (isset(Auth::user()->employee))
+
+                        @foreach ($viewModel->data->absensi as $no => $item)
+                        <tr>
+                            <td>{{ $item->hari }}</td>
+                            <td>{{ $item->tanggal }}</td>
+                            <td class="text-center">{{ $item->masuk }}</td>
+                            <td class="text-center">{{ $item->keluar }}</td>
+                            <td class="text-center">{{ $item->lama }}</td>
+                            <td class="text-center">{{ $item->lembur }}</td>
+                            <td>{{ $item->catatan }}</td>
+                            <td>{{ $item->keterangan }}</td>
+                        </tr>
+                        @endforeach
+                    @else
+                        <tr><td class="text-center" colspan="8">Data not available</td></tr>
+                    @endif
                     
                   </tbody>
                 </table>

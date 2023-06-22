@@ -74,7 +74,11 @@ margin-left: auto; margin-right:auto;">
         @else
           <input type="hidden" name="user_id" value="{{ $viewModel->data->user_id }}" readonly>
           <div class="form-group">
-              <input disabled type="text" value="{{ $viewModel->data->user->email }}" class="form-control">
+              @if(isset($viewModel->data->user))
+                <input disabled type="text" value="{{ $viewModel->data->user->email }}" class="form-control">
+              @else
+                <input disabled type="text" class="form-control">
+              @endif
           </div>
         @endif
         <p class="text-red">{{ $errors->first('user_id') }}</p>
