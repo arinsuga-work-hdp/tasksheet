@@ -306,6 +306,18 @@ class ActivityController extends BoController
 
 
     protected function filters($request) {
+
+        // $startdt = null;
+        // $enddt = null;
+
+        // return dd([
+        //     "startdt" => ["input" => $request->input('startdt'), "convert" => $startdt],
+        //     "enddt" => ["input" => $request->input('enddt'), "convert" => $enddt],
+        // ]);
+
+        // $startdt = ConvertDate::strDatetimeToDate($request->input('startdt'));
+        // $enddt = ConvertDate::strDatetimeToDate($request->input('enddt'));
+
         $filter = json_decode(json_encode([
             'startdt' => ConvertDate::strDatetimeToDate($request->input('startdt')),
             'enddt' => ConvertDate::strDatetimeToDate($request->input('enddt')),

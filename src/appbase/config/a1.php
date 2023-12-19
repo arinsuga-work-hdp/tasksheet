@@ -72,8 +72,10 @@ return [
     'datejs' => [
         'timezone' => 'Asia/Jakarta',
         'locale' => 'id',
+        'iso' => 'Y-m-d H:i:S',
 
         'time' => 'H:i:S',
+        'timeshort' => 'H:i',
         'timeampm' => 'G:i:S K',
 
         'date' => 'd/m/Y',
@@ -109,8 +111,10 @@ return [
     'date' => [
         'timezone' => 'Asia/Jakarta',
         'locale' => 'id_ID',
+        'iso' => 'YYYY-MM-DD HH:mm:ss',
 
         'time' => 'HH:mm:ss',
+        'timeshort' => 'HH:mm:',
         'timeampm' => 'hh:mm:ss A',
 
         'date' => 'DD/MM/YYYY',
@@ -194,19 +198,11 @@ return [
                 'Jm' => 'Fr',
                 'Sb' => 'Sa'
             ],
-
-            'hari' => [
-                'Minggu',
-                'Senin',
-                'Selasa',
-                'Rabu',
-                'Kamis',
-                'Jumat',
-                'Sabtu',
-            ],
-
-        
         ],
+
+        'isoindex' => [
+            'hari' => ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+        ]
     ],
 
     /*
