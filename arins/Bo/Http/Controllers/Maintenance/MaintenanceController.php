@@ -17,6 +17,8 @@ use Arins\Repositories\Tasksubtype2\Tasksubtype2RepositoryInterface;
 use Arins\Repositories\Employee\EmployeeRepositoryInterface;
 use Arins\Repositories\Technician\TechnicianRepositoryInterface;
 
+use Arins\Facades\Response;
+
 class MaintenanceController extends ActivityController
 {
 
@@ -47,5 +49,11 @@ class MaintenanceController extends ActivityController
         );
 
     } //end construct
+
+    protected function processReport()
+    {
+        $this->viewModel = Response::viewModel();
+        $this->viewModel->data = $this->data->byActivitytypeMostRecentDays($this->activitytype_id, 10);
+    }
 
 } //end class
