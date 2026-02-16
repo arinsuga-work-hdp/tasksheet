@@ -120,4 +120,10 @@ class SupportController extends ActivityController
         return 2; //fail of exception
     }
 
+    protected function processReport()
+    {
+        $this->viewModel = Response::viewModel();
+        $this->viewModel->data = $this->data->byActivitytypeMostRecentDays($this->activitytype_id, 10);
+    }
+
 } //end class

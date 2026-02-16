@@ -9,6 +9,7 @@ interface ActivityRepositoryInterface extends BaseRepositoryInterface
 {
     function byActivitytype($id, $take=null);
     function byActivitytypeOrderByIdAndStartdtDesc($id, $take=null);
+    function byActivitytypeMostRecentDays($id, $days);
     function byActivitytypeStatusOpenOrderByIdAndStartdtDesc($id, $take=null);
     function byActivitytypeTodayOrderByIdAndStartdtDesc($id, $take=null);
     function byActivitytypeCustom($id, $filter, $take=null);

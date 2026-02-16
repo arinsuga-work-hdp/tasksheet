@@ -136,6 +136,15 @@ class ActivityRepository extends BaseRepository implements ActivityRepositoryInt
         }
     }
 
+    public function byActivitytypeMostRecentDays($id, $days)
+    {
+        return $this->model::where('activitytype_id', $id)
+            ->where('startdt', '>=', Carbon::now()->subDays($days))
+            ->orderBy('startdt', 'desc')
+            ->orderBy('id', 'desc')
+            ->get();
+    }
+
     public function byActivitytypeStatusOpenOrderByIdAndStartdtDesc($id, $take=null)
     {
         if ($take == null) {
