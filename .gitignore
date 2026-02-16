@@ -11,3 +11,6 @@ npm-debug.log
 yarn-error.log
 /storage/app/public
 /public/storage
+/public/img/logo.*
+/public/img/logo_*.*
+/docs

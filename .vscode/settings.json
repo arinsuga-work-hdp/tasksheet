@@ -1,13 +1,9 @@
 {
-    //"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-    "terminal.integrated.profiles.windows": {
-        "C:\\Program Files\\Git\\bin\\bash.exe (migrated)": {
-            "path": "C:\\Program Files\\Git\\bin\\bash.exe",
-            "args": []
-        }
-    },
-    "terminal.integrated.defaultProfile.windows": "C:\\Program Files\\Git\\bin\\bash.exe (migrated)",
-    "window.zoomLevel": 0,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "typescript": "typescriptreact"},
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "window.zoomLevel": 1,
     "liveServer.settings.donotShowInfoMsg": true,
     "liveSassCompile.settings.formats":[
         // More Complex
@@ -25,5 +21,40 @@
     "extensions.ignoreRecommendations": false,
     "explorer.confirmDragAndDrop": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "explorer.autoReveal": false
+    "explorer.autoReveal": false,
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.editor.empty.hint": "hidden",
+    "remote.SSH.remotePlatform": {
+        "arinsugadevx": "linux"
+    },
+    "workbench.editorAssociations": {
+        "git-rebase-todo": "gitlens.rebase"
+    },
+    "codeium.enableConfig": {
+        "*": true,
+        "git-rebase": true
+    },
+    "chat.instructionsFilesLocations": {
+        ".github/instructions": true,
+        "C:\\Users\\arin\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
+        "C:\\Users\\arin\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true,
+        "C:\\Users\\arin\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
+        "C:\\Users\\arin\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
+        "C:\\Users\\arin\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
+        "C:\\Users\\arin\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true
+    },
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "editor.unicodeHighlight.allowedCharacters": {
+        "–": true
+    },
+    "json.schemaDownload.enable": true,
 }
